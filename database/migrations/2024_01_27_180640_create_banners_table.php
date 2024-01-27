@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('malls', function (Blueprint $table) {
+        Schema::create('banners', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('city');
-            $table->string('planeta_mall_code');
-            $table->string('site_href', 512);
+            $table->string('title')->nullable();
+            $table->string('href', 512)->nullable();
             $table->integer('priority')->default(0);
             $table->boolean('visible')->default(true);
             $table->timestamps();
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('malls');
+        Schema::dropIfExists('banners');
     }
 };
