@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('brands_malls', function (Blueprint $table) {
+        Schema::create('brand_mall', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('brand_id')
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('brands_malls');
+        Schema::dropIfExists('brand_mall');
     }
 };
