@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class Mall extends Model
+class Brand extends Model
 {
     use HasFactory;
 
     protected $guarded = [];
 
-    public function brands(): BelongsToMany
+    public function malls(): BelongsToMany
     {
-        return $this->belongsToMany(Brand::class);
+        return $this->belongsToMany(Mall::class);
     }
 }
