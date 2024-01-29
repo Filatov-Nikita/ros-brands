@@ -4,7 +4,7 @@
 
 @section('content_header')
   <div class="mb-3">
-    <a class="" href="{{ route('brands.index') }}">К списку</a>
+    <a href="{{ route('brands.index') }}">К списку</a>
   </div>
   <h1>Создать Бренд</h1>
 @stop

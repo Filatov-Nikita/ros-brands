@@ -4,7 +4,7 @@
 
 @section('content_header')
   <div class="mb-3">
-    <a class="" href="{{ route('malls.index') }}">К списку</a>
+    <a href="{{ route('malls.index') }}">К списку</a>
   </div>
   <h1>Создать ТРЦ</h1>
 @stop

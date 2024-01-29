@@ -10,7 +10,7 @@
 <div class="mb-4">
   <a class="btn btn-primary" href="{{ route('malls.create') }}">Создать</a>
 </div>
-<table id="mall-list-table" style="width:100%">
+<table class="table" id="mall-list-table" style="width:100%">
   <thead>
       <tr>
         <th>Название</th>

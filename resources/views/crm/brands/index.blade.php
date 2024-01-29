@@ -10,7 +10,7 @@
 <div class="mb-4">
   <a class="btn btn-primary" href="{{ route('brands.create') }}">Создать</a>
 </div>
-<table id="brand-list-table" style="width:100%">
+<table class="table" id="brand-list-table" style="width:100%">
   <thead>
       <tr>
         <th>Название</th>
