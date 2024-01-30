@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             MallSeeder::class,
             BrandSeeder::class,
             ProductCategorySeeder::class,
+            LookColorSeeder::class,
         ]);
     }
 }
