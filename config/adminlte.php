@@ -336,6 +336,11 @@ return [
             'url'  => 'crm/look-styles',
             'icon' => 'fas fa-fw fa-tags',
         ],
+        [
+            'text' => 'Стилисты',
+            'url'  => 'crm/designers',
+            'icon' => 'fas fa-fw fa-female',
+        ],
     ],
 
     /*
