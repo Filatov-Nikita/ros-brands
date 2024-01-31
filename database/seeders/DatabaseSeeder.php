@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             LookColorSeeder::class,
             LookCategorySeeder::class,
             LookStyleSeeder::class,
+            DesignerSeeder::class,
         ]);
     }
 }
