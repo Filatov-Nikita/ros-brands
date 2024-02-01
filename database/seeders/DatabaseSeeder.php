@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             LookCategorySeeder::class,
             LookStyleSeeder::class,
             DesignerSeeder::class,
+            BannerSeeder::class,
         ]);
     }
 }
