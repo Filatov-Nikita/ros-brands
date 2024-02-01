@@ -341,6 +341,12 @@ return [
             'url'  => 'crm/designers',
             'icon' => 'fas fa-fw fa-female',
         ],
+        ['header' => 'Маркетинг'],
+        [
+            'text' => 'Баннеры',
+            'url'  => 'crm/banners',
+            'icon' => 'fas fa-fw fa-desktop',
+        ],
     ],
 
     /*

@@ -8,6 +8,7 @@ use App\Http\Controllers\Crm\LookColorController;
 use App\Http\Controllers\Crm\LookCategoryController;
 use App\Http\Controllers\Crm\LookStyleController;
 use App\Http\Controllers\Crm\DesignerController;
+use App\Http\Controllers\Crm\BannerController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('malls', MallController::class);
@@ -18,3 +19,4 @@ Route::resource('look-colors', LookColorController::class);
 Route::resource('look-categories', LookCategoryController::class);
 Route::resource('look-styles', LookStyleController::class);
 Route::resource('designers', DesignerController::class);
+Route::resource('banners', BannerController::class);
