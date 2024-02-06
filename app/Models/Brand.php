@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Brand extends Model
 {
@@ -21,5 +22,10 @@ class Brand extends Model
     public function products(): HasMany
     {
         return $this->hasMany(Products::class);
+    }
+
+    public function logotype(): MorphOne
+    {
+        return $this->morphOne(Attachment::class, 'domain')->where('type', 'logotype');
     }
 }
