@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('images', function (Blueprint $table) {
+        Schema::create('attachments', function (Blueprint $table) {
             $table->id();
 
             $table->morphs('owner');
@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('height')->unsigned()->nullable();
             $table->integer('size_in_bytes')->unsigned();
             $table->string('type');
+            $table->string('media_type', 128);
             $table->string('disk');
             $table->string('path', 512);
 
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('images');
+        Schema::dropIfExists('attachments');
     }
 };
