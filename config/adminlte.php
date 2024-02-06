@@ -322,6 +322,11 @@ return [
         ],
         ['header' => 'Образы'],
         [
+            'text' => 'Образы',
+            'url'  => 'crm/looks',
+            'icon' => 'fas fa-fw fa-paint-brush',
+        ],
+        [
             'text' => 'Цвета',
             'url'  => 'crm/look-colors',
             'icon' => 'fas fa-fw fa-tint',
