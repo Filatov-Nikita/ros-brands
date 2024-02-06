@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('looks_look_styles', function (Blueprint $table) {
+        Schema::create('look_product', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('look_id')
@@ -19,7 +19,7 @@ return new class extends Migration
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
 
-            $table->foreignId('look_style_id')
+            $table->foreignId('product_id')
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('looks_look_styles');
+        Schema::dropIfExists('look_product');
     }
 };
