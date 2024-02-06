@@ -9,42 +9,68 @@
 @stop
 
 @section('content')
-  <div class="card col col-6">
-    <div class="card-header">
-      <h1>Бренд {{ $brand->name }}</h1>
+  <div class="row">
+    <div class="col col-6">
+      <div class="card">
+        <div class="card-header">
+          <h1>Бренд {{ $brand->name }}</h1>
+        </div>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>ID</th>
+              <th>{{ $brand->id }}</th>
+            </tr>
+            <tr>
+              <th>Название</th>
+              <th>{{ $brand->name }}</th>
+            </tr>
+            <tr>
+              <th>ID на сайте планета</th>
+              <th>{{ $brand->planeta_mall_id }}</th>
+            </tr>
+            <tr>
+              <th>Видимость</th>
+              <th>{{ $brand->visible ? 'Да' : 'Нет' }}</th>
+            </tr>
+            <tr>
+              <th>Есть в ТРЦ:</th>
+              <th>
+                <ul class="list-group">
+                  @forelse($malls as $mall)
+                    <li class="list-group-item">{{ $mall->name }} - {{ $mall->city }}</li>
+                  @empty
+                    <p class="text-danger">Не привязан ни к одному ТРЦ</p>
+                  @endforelse
+                </ul>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <th>ID</th>
-          <th>{{ $brand->id }}</th>
-        </tr>
-        <tr>
-          <th>Название</th>
-          <th>{{ $brand->name }}</th>
-        </tr>
-        <tr>
-          <th>ID на сайте планета</th>
-          <th>{{ $brand->planeta_mall_id }}</th>
-        </tr>
-        <tr>
-          <th>Видимость</th>
-          <th>{{ $brand->visible ? 'Да' : 'Нет' }}</th>
-        </tr>
-        <tr>
-          <th>Есть в ТРЦ:</th>
-          <th>
-            <ul class="list-group">
-              @forelse($malls as $mall)
-                <li class="list-group-item">{{ $mall->name }} - {{ $mall->city }}</li>
-              @empty
-                <p class="text-danger">Не привязан ни к одному ТРЦ</p>
-              @endforelse
-            </ul>
-          </th>
-        </tr>
-      </tbody>
-    </table>
+    <div class="col col-6">
+      <div class="card">
+        <div class="card-header">
+          Логотип бренда
+        </div>
+        <div class="card-body">
+          @if($logotype)
+            <div class="mb-3">
+              <img style="width: 180px; height: auto" width="{{ $logotype->width }}" height="{{ $logotype->height }}" src="{{ $logotype->url }}" />
+            </div>
+          @endif
+          <form action="{{ route('brands.attach_logotype', [ 'brand' => $brand->id ]) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="custom-file">
+              <input name="logotype_file" type="file" class="custom-file-input" id="logo-file">
+              <label class="custom-file-label" for="logo-file">Выберите файл</label>
+            </div>
+            <button class="btn btn-primary mt-3" type="submit">Загрузить</button>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 @stop
 

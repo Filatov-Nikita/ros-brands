@@ -18,6 +18,10 @@ Route::post('malls/{mall}/attach-logotype', [
 ])->name('malls.attach_logotype');
 
 Route::resource('brands', BrandController::class);
+Route::post('brands/{brand}/attach-logotype', [
+   BrandController::class, 'attach_logotype'
+])->name('brands.attach_logotype');
+
 Route::resource('product-categories', ProductCategoryController::class);
 Route::resource('products', ProductController::class);
 Route::resource('look-colors', LookColorController::class);

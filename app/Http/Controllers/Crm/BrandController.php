@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Brand;
 use App\Models\Mall;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Attachment;
+use App\Models\DataTransferObjects\Attachments\CreateImageData;
+use App\Models\Actions\Attachments\CreateImage;
 
 class BrandController extends Controller
 {
@@ -66,6 +70,7 @@ class BrandController extends Controller
         return view('crm.brands.show', [
             'brand' => $brand,
             'malls' => $brand->malls()->get(),
+            'logotype' => $brand->logotype,
         ]);
     }
 
@@ -117,5 +122,28 @@ class BrandController extends Controller
         Brand::destroy($id);
 
         return redirect()->route('brands.index');
+    }
+
+    public function attach_logotype(Request $request, string $id, CreateImage $createImage) {
+        $request->validate([
+            'logotype_file' => 'required',
+        ]);
+
+        $file = $request->file('logotype_file');
+
+        $brand = Brand::findOrFail($id);
+
+        $data = new CreateImageData(
+            image: $file,
+            relatable: $brand,
+            owner: $request->user(),
+            disk: 'public',
+            directory: 'brands',
+            type: 'logotype'
+        );
+
+        $createImage($data);
+
+        return to_route('brands.show', [ 'brand' => $id ]);
     }
 }
