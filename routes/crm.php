@@ -9,6 +9,7 @@ use App\Http\Controllers\Crm\LookCategoryController;
 use App\Http\Controllers\Crm\LookStyleController;
 use App\Http\Controllers\Crm\DesignerController;
 use App\Http\Controllers\Crm\BannerController;
+use App\Http\Controllers\Crm\LookController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('malls', MallController::class);
@@ -20,3 +21,7 @@ Route::resource('look-categories', LookCategoryController::class);
 Route::resource('look-styles', LookStyleController::class);
 Route::resource('designers', DesignerController::class);
 Route::resource('banners', BannerController::class);
+Route::resource('looks', LookController::class);
+Route::post('looks/attach-products/{look}', [
+   LookController::class, 'attach_products'
+])->name('looks.attach_products');
