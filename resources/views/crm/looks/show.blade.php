@@ -82,6 +82,50 @@
         </table>
       </div>
     </div>
+      @if($video)
+        <div class="card">
+          <div class="card-header">
+            Видео
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <video style="width: 100%; height: auto" controls src="{{ $video->url }}"></video>
+            </div>
+            <form class="mb-4" action="{{ route('looks.video.update', [ 'look' => $look->id ]) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="custom-file">
+                <input name="video_file" type="file" class="custom-file-input" id="video_file">
+                <label class="custom-file-label" for="video_file">Выберите файл</label>
+              </div>
+              <button class="btn btn-primary mt-3" type="submit">Редактировать</button>
+            </form>
+            <form method="POST" action="{{ route('looks.video.remove', [ 'look' => $look->id ]) }}">
+              @method('DELETE')
+              @csrf
+              <button class="btn btn-danger" type="submit" alt="удалить">
+                удалить
+              </button>
+            </form>
+          </div>
+        </div>
+      @elseif($can_upload_assets)
+        <div class="card">
+          <div class="card-header">
+            Видео
+          </div>
+          <div class="card-body">
+            <form action="{{ route('looks.video.store', [ 'look' => $look->id ]) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="custom-file">
+                <input name="video_file" type="file" class="custom-file-input" id="video_file">
+                <label class="custom-file-label" for="video_file">Выберите файл</label>
+              </div>
+              <button class="btn btn-primary mt-3" type="submit">Загрузить</button>
+            </form>
+          </div>
+        </div>
+      @endif
+    </div>
     <div class="col col-12">
       <div class="card">
         <div class="card-header">

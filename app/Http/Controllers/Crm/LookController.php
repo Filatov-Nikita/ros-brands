@@ -80,7 +80,19 @@ class LookController extends Controller
 
         $products = Product::all();
 
-        return view('crm.looks.show', [ 'look' => $look, 'products' => $products ]);
+        $images = $look->images;
+        $video = $look->video;
+
+        $can_upload_assets = count($images) + ($video ? 1 : 0) < 4;
+
+        return view('crm.looks.show', [
+            'look' => $look,
+            'products' => $products,
+            'thumbnail' => $look->thumbnail,
+            'images' => $images,
+            'video' => $video,
+            'can_upload_assets' => $can_upload_assets,
+        ]);
     }
 
     /**
