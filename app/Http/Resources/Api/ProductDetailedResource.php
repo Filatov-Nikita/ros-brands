@@ -55,6 +55,7 @@ class ProductDetailedResource extends JsonResource
                 'name' => $this->brand->name,
                 'planeta_mall_id' => $this->brand->planeta_mall_id,
             ],
+            'images' => ImageResource::collection($this->images),
             'updated_at' => $this->updated_at,
         ];
     }

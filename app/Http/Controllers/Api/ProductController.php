@@ -47,7 +47,7 @@ class ProductController extends Controller
 
         $query->where('visible', 1);
 
-        $query->with('brand');
+        $query->with(['brand', 'images', 'thumbnail']);
 
         $result = $query->paginate(16);
 
