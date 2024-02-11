@@ -49,4 +49,9 @@ class Look extends Model
     {
         return $this->morphMany(Attachment::class, 'domain')->where('type', 'image');
     }
+
+    public function video(): MorphOne
+    {
+        return $this->morphOne(Attachment::class, 'domain')->where('type', 'video');
+    }
 }

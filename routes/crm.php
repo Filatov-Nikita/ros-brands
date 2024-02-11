@@ -11,6 +11,7 @@ use App\Http\Controllers\Crm\LookStyleController;
 use App\Http\Controllers\Crm\DesignerController;
 use App\Http\Controllers\Crm\BannerController;
 use App\Http\Controllers\Crm\LookController;
+use App\Http\Controllers\Crm\LookVideoController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('malls', MallController::class);
@@ -56,3 +57,16 @@ Route::resource('looks', LookController::class);
 Route::post('looks/attach-products/{look}', [
    LookController::class, 'attach_products'
 ])->name('looks.attach_products');
+
+
+Route::post('looks/{look}/video', [
+   LookVideoController::class, 'store_video'
+])->name('looks.video.store');
+
+Route::delete('looks/{look}/video', [
+   LookVideoController::class, 'remove_video'
+])->name('looks.video.remove');
+
+Route::put('looks/{look}/video', [
+   LookVideoController::class, 'update_video'
+])->name('looks.video.update');
