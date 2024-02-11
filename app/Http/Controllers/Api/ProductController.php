@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Http\Resources\Api\ProductListResource;
 
 class ProductController extends Controller
 {
@@ -49,7 +50,7 @@ class ProductController extends Controller
 
         $result = $query->paginate(16);
 
-        return $result;
+        return ProductListResource::collection($result);
     }
 
     /**
