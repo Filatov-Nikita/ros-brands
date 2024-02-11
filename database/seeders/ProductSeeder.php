@@ -15,13 +15,15 @@ class ProductSeeder extends Seeder
      */
     public function run(): void
     {
-        Product::create([
-            'name' => 'Тестовый продукт',
-            'consist' => 'состав',
-            'description' => 'test',
-            'price' => 100,
-            'product_category_id' => ProductCategory::get()->first()->id,
-            'brand_id' => Brand::get()->first()->id,
-        ]);
+        for ($i = 0; $i < 100; $i++) {
+            Product::create([
+                'name' => 'Тестовый продукт ' . $i,
+                'consist' => 'состав ' . $i,
+                'description' => 'test ' . $i,
+                'price' => 100 + $i,
+                'product_category_id' => ProductCategory::get()->first()->id,
+                'brand_id' => Brand::get()->first()->id,
+            ]);
+        }
     }
 }
