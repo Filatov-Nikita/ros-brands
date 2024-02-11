@@ -68,6 +68,8 @@ class ProductController extends Controller
 
         return view('crm.products.show', [
             'product' => $product,
+            'thumbnail' => $product->thumbnail,
+            'images' => $product->images,
             'brand' => $product->brand()->first(),
             'category' => $product->product_category()->first(),
         ]);
