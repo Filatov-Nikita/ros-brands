@@ -23,3 +23,14 @@ function get_all_parent_cat_ids($cats, $cat_id, & $list = []) {
 
     return $list;
 }
+
+function get_flat_parents($cats, $cat_id, & $list = []) {
+    foreach($cats as $cat) {
+        if($cat['id'] === $cat_id) {
+            $list[] = $cat;
+            get_flat_parents($cats, $cat['parent_id'], $list);
+        }
+    }
+
+    return $list;
+}

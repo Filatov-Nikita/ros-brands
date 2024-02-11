@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Http\Resources\Api\ProductListResource;
+use App\Http\Resources\Api\ProductDetailedResource;
 
 class ProductController extends Controller
 {
@@ -76,7 +77,7 @@ class ProductController extends Controller
     {
         $product = Product::with('brand')->findOrFail($id);
 
-        return $product;
+        return new ProductDetailedResource($product);
     }
 
     /**
