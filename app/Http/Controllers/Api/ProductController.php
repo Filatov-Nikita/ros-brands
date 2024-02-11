@@ -25,7 +25,7 @@ class ProductController extends Controller
 
         if($request->filled('product_category_id')) {
             $cats = ProductCategory::all();
-            $ids = get_all_parent_cat_ids($cats->toArray(), intval($request->input('product_category_id')));
+            $ids = get_cat_children_ids($cats->toArray(), intval($request->input('product_category_id')));
             $query->whereIn('product_category_id', $ids);
         }
 

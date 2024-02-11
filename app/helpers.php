@@ -13,11 +13,11 @@ function app_get_tree($cats, $parent_id = null) {
     return $list;
 }
 
-function get_all_parent_cat_ids($cats, $cat_id, & $list = []) {
+function get_cat_children_ids($cats, $cat_id, & $list = []) {
     $list[] = $cat_id;
     foreach($cats as $cat) {
         if($cat['parent_id'] === $cat_id) {
-            get_all_parent_cat_ids($cats, $cat['id'], $list);
+            get_cat_children_ids($cats, $cat['id'], $list);
         }
     }
 
