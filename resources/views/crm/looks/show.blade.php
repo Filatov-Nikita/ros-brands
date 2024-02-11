@@ -82,6 +82,79 @@
         </table>
       </div>
     </div>
+    <div class="col col-6">
+      <div class="card">
+        <div class="card-header">
+          Миниатюра
+        </div>
+        <div class="card-body">
+          @if($thumbnail)
+            <div class="mb-3">
+              <img style="width: 180px; height: auto" width="{{ $thumbnail->width }}" height="{{ $thumbnail->height }}" src="{{ $thumbnail->url }}" />
+            </div>
+            <form action="{{ route('looks.thumb.update', [ 'look' => $look->id ]) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              @method('PUT')
+              <div class="custom-file">
+                <input name="thumb_file" type="file" class="custom-file-input" id="thumb-file">
+                <label class="custom-file-label" for="thumb-file">Выберите файл</label>
+              </div>
+              <button class="btn btn-primary mt-3" type="submit">Редактировать</button>
+            </form>
+          @else
+          <form action="{{ route('looks.thumb.store', [ 'look' => $look->id ]) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="custom-file">
+              <input name="thumb_file" type="file" class="custom-file-input" id="thumb-file">
+              <label class="custom-file-label" for="thumb-file">Выберите файл</label>
+            </div>
+            <button class="btn btn-primary mt-3" type="submit">Загрузить</button>
+          </form>
+          @endif
+        </div>
+      </div>
+      @foreach($images as $image)
+        <div class="card">
+          <div class="card-body">
+            <div class="mb-2">
+              <img style="width: 180px; height: auto" width="{{ $image->width }}" height="{{ $image->height }}" src="{{ $image->url }}" />
+            </div>
+            <form class="mb-4" action="{{ route('looks.image.update', [ 'look' => $look->id, 'image' => $image->id ]) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              @method('PUT')
+              <div class="custom-file">
+                <input name="image_file" type="file" class="custom-file-input">
+                <label class="custom-file-label">Выберите файл</label>
+              </div>
+              <button class="btn btn-primary mt-2" type="submit">Редактировать</button>
+            </form>
+            <form method="POST" action="{{ route('looks.image.remove', [ 'look' => $look->id, 'image' => $image->id ]) }}">
+              @method('DELETE')
+              @csrf
+              <button class="btn btn-danger" type="submit" alt="удалить">
+                удалить
+              </button>
+            </form>
+          </div>
+        </div>
+      @endforeach
+      @if($can_upload_assets)
+        <div class="card">
+          <div class="card-header">
+            Загрузить изображение
+          </div>
+          <div class="card-body">
+            <form action="{{ route('looks.image.store', [ 'look' => $look->id ]) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <div class="custom-file">
+                <input name="image_file" type="file" class="custom-file-input" id="image_file">
+                <label class="custom-file-label" for="image_file">Выберите файл</label>
+              </div>
+              <button class="btn btn-primary mt-3" type="submit">Загрузить</button>
+            </form>
+          </div>
+        </div>
+      @endif
       @if($video)
         <div class="card">
           <div class="card-header">
