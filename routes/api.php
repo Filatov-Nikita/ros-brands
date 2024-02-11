@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\MallController;
 use App\Http\Controllers\Api\ProductCategoryController;
 use App\Http\Controllers\Api\BrandController;
+use App\Http\Controllers\Api\LookCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +36,9 @@ Route::resource('product-categories', ProductCategoryController::class)->only([
 ]);
 
 Route::resource('brands', BrandController::class)->only([
+    'index'
+]);
+
+Route::resource('look-categories', LookCategoryController::class)->only([
     'index'
 ]);
