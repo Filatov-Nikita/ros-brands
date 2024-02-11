@@ -17,8 +17,8 @@ class ProductController extends Controller
     {
         $query = Product::query();
 
-        if($request->filled('brand_id')) {
-            $query->where('brand_id', $request->input('brand_id'));
+        if($request->filled('brand_ids')) {
+            $query->whereIn('brand_id', $request->input('brand_ids'));
         }
 
         if($request->filled('product_category_id')) {
