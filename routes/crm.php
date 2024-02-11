@@ -11,6 +11,7 @@ use App\Http\Controllers\Crm\LookStyleController;
 use App\Http\Controllers\Crm\DesignerController;
 use App\Http\Controllers\Crm\BannerController;
 use App\Http\Controllers\Crm\LookController;
+use App\Http\Controllers\Crm\LookImageController;
 use App\Http\Controllers\Crm\LookVideoController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,6 +58,27 @@ Route::resource('looks', LookController::class);
 Route::post('looks/attach-products/{look}', [
    LookController::class, 'attach_products'
 ])->name('looks.attach_products');
+
+
+Route::post('looks/{look}/thumb', [
+   LookImageController::class, 'store_thumb'
+])->name('looks.thumb.store');
+
+Route::put('looks/{look}/thumb', [
+   LookImageController::class, 'update_thumb'
+])->name('looks.thumb.update');
+
+Route::post('looks/{look}/image', [
+   LookImageController::class, 'store_image'
+])->name('looks.image.store');
+
+Route::delete('looks/{look}/image/{image}', [
+   LookImageController::class, 'remove_image'
+])->name('looks.image.remove');
+
+Route::put('looks/{look}/image/{image}', [
+   LookImageController::class, 'update_image'
+])->name('looks.image.update');
 
 
 Route::post('looks/{look}/video', [
