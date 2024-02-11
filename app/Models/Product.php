@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 class Product extends Model
 {
@@ -26,5 +28,15 @@ class Product extends Model
     public function looks(): BelongsToMany
     {
         return $this->belongsToMany(Look::class);
+    }
+
+    public function thumbnail(): MorphOne
+    {
+        return $this->morphOne(Attachment::class, 'domain')->where('type', 'thumbnail');
+    }
+
+    public function images(): MorphMany
+    {
+        return $this->morphMany(Attachment::class, 'domain')->where('type', 'image');
     }
 }
