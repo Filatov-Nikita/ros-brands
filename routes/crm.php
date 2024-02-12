@@ -9,6 +9,7 @@ use App\Http\Controllers\Crm\LookColorController;
 use App\Http\Controllers\Crm\LookCategoryController;
 use App\Http\Controllers\Crm\LookStyleController;
 use App\Http\Controllers\Crm\DesignerController;
+use App\Http\Controllers\Crm\DesignerImageController;
 use App\Http\Controllers\Crm\BannerController;
 use App\Http\Controllers\Crm\LookController;
 use App\Http\Controllers\Crm\LookImageController;
@@ -52,7 +53,19 @@ Route::put('products/{product}/image/{image}', [
 Route::resource('look-colors', LookColorController::class);
 Route::resource('look-categories', LookCategoryController::class);
 Route::resource('look-styles', LookStyleController::class);
+
+
 Route::resource('designers', DesignerController::class);
+
+Route::post('designers/{designer}/image', [
+   DesignerImageController::class, 'store'
+])->name('designers.image.store');
+
+Route::put('designers/{designer}/image', [
+   DesignerImageController::class, 'update'
+])->name('designers.image.update');
+
+
 Route::resource('banners', BannerController::class);
 Route::resource('looks', LookController::class);
 Route::post('looks/attach-products/{look}', [
