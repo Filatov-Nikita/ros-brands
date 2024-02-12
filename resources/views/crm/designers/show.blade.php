@@ -9,38 +9,74 @@
 @stop
 
 @section('content')
-  <div class="card col col-6">
-    <div class="card-header">
-      <h1>Стилист {{ $designer->name }}</h1>
+  <div class="row">
+    <div class="col col-6">
+      <div class="card">
+        <div class="card-header">
+          <h1>Стилист {{ $designer->name }}</h1>
+        </div>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>ID</th>
+              <th>{{ $designer->id }}</th>
+            </tr>
+            <tr>
+              <th>Название</th>
+              <th>{{ $designer->name }}</th>
+            </tr>
+            <tr>
+              <th>Короткое описание</th>
+              <th>{{ $designer->position }}</th>
+            </tr>
+            <tr>
+              <th>Описание</th>
+              <th>{{ $designer->description }}</th>
+            </tr>
+            <tr>
+              <th>Видимость</th>
+              <th>{{ $designer->visible ? 'Да' : 'Нет' }}</th>
+            </tr>
+            <tr>
+              <th>Приоритет</th>
+              <th>{{ $designer->priority }}</th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
-    <table class="table table-striped">
-      <tbody>
-        <tr>
-          <th>ID</th>
-          <th>{{ $designer->id }}</th>
-        </tr>
-        <tr>
-          <th>Название</th>
-          <th>{{ $designer->name }}</th>
-        </tr>
-        <tr>
-          <th>Короткое описание</th>
-          <th>{{ $designer->position }}</th>
-        </tr>
-        <tr>
-          <th>Описание</th>
-          <th>{{ $designer->description }}</th>
-        </tr>
-        <tr>
-          <th>Видимость</th>
-          <th>{{ $designer->visible ? 'Да' : 'Нет' }}</th>
-        </tr>
-        <tr>
-          <th>Приоритет</th>
-          <th>{{ $designer->priority }}</th>
-        </tr>
-      </tbody>
-    </table>
+    <div class="col col-6">
+      <div class="card">
+        <div class="card-header">
+          Изображение
+        </div>
+        <div class="card-body">
+          @if($image)
+            <div class="mb-3">
+              <img style="width: 180px; height: auto" width="{{ $image->width }}" height="{{ $image->height }}" src="{{ $image->url }}" />
+            </div>
+            <form action="{{ route('designers.image.update', [ 'designer' => $designer->id ]) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              @method('PUT')
+              <div class="custom-file">
+                <input name="image_file" type="file" class="custom-file-input" id="image-file">
+                <label class="custom-file-label" for="image-file">Выберите файл</label>
+              </div>
+              <button class="btn btn-primary mt-3" type="submit">Редактировать</button>
+            </form>
+          @else
+          <form action="{{ route('designers.image.store', [ 'designer' => $designer->id ]) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="custom-file">
+              <input name="image_file" type="file" class="custom-file-input" id="image-file">
+              <label class="custom-file-label" for="image-file">Выберите файл</label>
+            </div>
+            <button class="btn btn-primary mt-3" type="submit">Загрузить</button>
+          </form>
+          @endif
+        </div>
+      </div>
+    </div>
   </div>
 @stop
 

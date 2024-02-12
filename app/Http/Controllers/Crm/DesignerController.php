@@ -53,7 +53,10 @@ class DesignerController extends Controller
     {
         $designer = Designer::findOrFail($id);
 
-        return view('crm.designers.show', [ 'designer' => $designer ]);
+        return view('crm.designers.show', [
+            'designer' => $designer,
+            'image' => $designer->image,
+        ]);
     }
 
     /**
