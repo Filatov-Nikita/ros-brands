@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\MallController;
 use App\Http\Controllers\Api\ProductCategoryController;
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\LookCategoryController;
+use App\Http\Controllers\Api\DesignerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,8 @@ Route::resource('brands', BrandController::class)->only([
 
 Route::resource('look-categories', LookCategoryController::class)->only([
     'index'
+]);
+
+Route::resource('designers', DesignerController::class)->only([
+    'index', 'show'
 ]);
