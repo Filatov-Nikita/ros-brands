@@ -8,6 +8,9 @@ use App\Http\Controllers\Api\ProductCategoryController;
 use App\Http\Controllers\Api\BrandController;
 use App\Http\Controllers\Api\LookCategoryController;
 use App\Http\Controllers\Api\DesignerController;
+use App\Http\Controllers\Api\LookColorController;
+use App\Http\Controllers\Api\LookStyleController;
+use App\Http\Controllers\Api\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +50,15 @@ Route::resource('look-categories', LookCategoryController::class)->only([
 Route::resource('designers', DesignerController::class)->only([
     'index', 'show'
 ]);
+
+Route::resource('look-colors', LookColorController::class)->only([
+    'index',
+]);
+
+Route::resource('look-styles', LookStyleController::class)->only([
+    'index',
+]);
+
 Route::resource('banners', BannerController::class)->only([
     'index',
 ]);
