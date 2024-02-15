@@ -19,7 +19,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::all();
+        $brands = Brand::orderBy('name', 'asc')->get();
 
         return view('crm.brands.index', [
             'brands' => $brands

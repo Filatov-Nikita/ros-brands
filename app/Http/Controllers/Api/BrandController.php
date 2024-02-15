@@ -13,7 +13,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::where('visible', 1)->get();
+        $brands = Brand::where('visible', 1)->orderBy('name', 'asc')->get();
         return $brands;
     }
 
