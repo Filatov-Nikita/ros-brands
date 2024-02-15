@@ -47,3 +47,6 @@ Route::resource('look-categories', LookCategoryController::class)->only([
 Route::resource('designers', DesignerController::class)->only([
     'index', 'show'
 ]);
+Route::resource('banners', BannerController::class)->only([
+    'index',
+]);
