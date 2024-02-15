@@ -11,6 +11,7 @@ use App\Http\Controllers\Crm\LookStyleController;
 use App\Http\Controllers\Crm\DesignerController;
 use App\Http\Controllers\Crm\DesignerImageController;
 use App\Http\Controllers\Crm\BannerController;
+use App\Http\Controllers\Crm\BannerImageController;
 use App\Http\Controllers\Crm\LookController;
 use App\Http\Controllers\Crm\LookImageController;
 use App\Http\Controllers\Crm\LookVideoController;
@@ -67,6 +68,24 @@ Route::put('designers/{designer}/image', [
 
 
 Route::resource('banners', BannerController::class);
+
+Route::post('banners/{banner}/image', [
+   BannerImageController::class, 'store_image'
+])->name('banners.image.store');
+
+Route::put('banners/{banner}/image', [
+   BannerImageController::class, 'update_image'
+])->name('banners.image.update');
+
+Route::post('banners/{banner}/image-mobile', [
+   BannerImageController::class, 'store_image_mobile'
+])->name('banners.image-mobile.store');
+
+Route::put('banners/{banner}/image-mobile', [
+   BannerImageController::class, 'update_image_mobile'
+])->name('banners.image-mobile.update');
+
+
 Route::resource('looks', LookController::class);
 Route::post('looks/attach-products/{look}', [
    LookController::class, 'attach_products'

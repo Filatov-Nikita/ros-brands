@@ -54,6 +54,8 @@ class BannerController extends Controller
 
         return view('crm.banners.show', [
             'banner' => $banner,
+            'image' => $banner->image,
+            'image_mobile' => $banner->image_mobile,
         ]);
     }
 
