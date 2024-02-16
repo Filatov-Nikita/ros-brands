@@ -70,19 +70,44 @@
           </form>
         </div>
       </div>
+      <div class="card">
+        <div class="card-header">
+          Промоакции
+        </div>
+        <div class="card-body">
+          <form action="{{ route('brands.attach_promotions', [ 'brand' => $brand->id ]) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div id="promo-group" class="form-group">
+              <label>Промоакции</label>
+              <select id="promotion-select"  class="form-control" name="promotion_ids[]" multiple="multiple">
+                @foreach($promotions as $promotion)
+                  <option value="{{ $promotion->id }}" @selected($brand->promotions->contains($promotion->id))>
+                    {{ $promotion->name }}
+                  </option>
+                @endforeach
+              </select>
+            </div>
+            <button class="btn btn-primary mt-3" type="submit">Привязать акции</button>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 @stop
 
 @section('css')
   {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+  <style>
+    #promo-group .select2-selection--multiple .select2-selection__choice {
+      color: #000000;
+    }
+  </style>
 @stop
 
 @section('js')
   <script>
-    $('#brand-list-table').DataTable();
-    // new DataTable('', {
-    //     order: [[3, 'desc']]
-    // });
+    $('#promotion-select').select2({
+      placeholder: 'Выберите акции'
+    });
   </script>
 @stop

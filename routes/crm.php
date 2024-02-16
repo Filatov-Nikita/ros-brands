@@ -15,6 +15,7 @@ use App\Http\Controllers\Crm\BannerImageController;
 use App\Http\Controllers\Crm\LookController;
 use App\Http\Controllers\Crm\LookImageController;
 use App\Http\Controllers\Crm\LookVideoController;
+use App\Http\Controllers\Crm\PromotionController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('malls', MallController::class);
@@ -26,6 +27,9 @@ Route::resource('brands', BrandController::class);
 Route::post('brands/{brand}/attach-logotype', [
    BrandController::class, 'attach_logotype'
 ])->name('brands.attach_logotype');
+Route::post('brands/{brand}/attach-promotions', [
+   BrandController::class, 'attach_promotions'
+])->name('brands.attach_promotions');
 
 Route::resource('product-categories', ProductCategoryController::class);
 

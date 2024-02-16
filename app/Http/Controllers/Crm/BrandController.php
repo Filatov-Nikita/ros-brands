@@ -9,6 +9,7 @@ use App\Models\Mall;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Attachment;
+use App\Models\Promotion;
 use App\Models\DataTransferObjects\Attachments\CreateImageData;
 use App\Models\Actions\Attachments\CreateImage;
 
@@ -66,11 +67,13 @@ class BrandController extends Controller
     public function show(string $id)
     {
         $brand = Brand::findOrFail($id);
+        $promotions = Promotion::all();
 
         return view('crm.brands.show', [
             'brand' => $brand,
             'malls' => $brand->malls()->get(),
             'logotype' => $brand->logotype,
+            'promotions' => $promotions,
         ]);
     }
 
@@ -143,6 +146,19 @@ class BrandController extends Controller
         );
 
         $createImage($data);
+
+        return to_route('brands.show', [ 'brand' => $id ]);
+    }
+
+    public function attach_promotions(Request $request, string $id)
+    {
+        $request->validate([
+            'promotion_ids.*' => 'exists:App\Models\Promotion,id',
+        ]);
+
+        $brand = Brand::findOrFail($id);
+
+        $brand->promotions()->sync($request->input('promotion_ids'));
 
         return to_route('brands.show', [ 'brand' => $id ]);
     }
