@@ -124,3 +124,6 @@ Route::delete('looks/{look}/video', [
 Route::put('looks/{look}/video', [
    LookVideoController::class, 'update_video'
 ])->name('looks.video.update');
+
+
+Route::resource('promotions', PromotionController::class);
