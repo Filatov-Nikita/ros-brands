@@ -28,4 +28,9 @@ class Brand extends Model
     {
         return $this->morphOne(Attachment::class, 'domain')->where('type', 'logotype');
     }
+
+    public function promotions(): BelongsToMany
+    {
+        return $this->belongsToMany(Promotion::class);
+    }
 }
