@@ -50,11 +50,7 @@ class ProductDetailedResource extends JsonResource
             'price' => $this->price,
             'description' => $this->description,
             'product_categories' => $parents,
-            'brand' => [
-                'id' => $this->brand->id,
-                'name' => $this->brand->name,
-                'planeta_mall_id' => $this->brand->planeta_mall_id,
-            ],
+            'brand' => new ProductBrandResource($this->brand),
             'images' => ImageResource::collection($this->images),
             'updated_at' => $this->updated_at,
         ];
