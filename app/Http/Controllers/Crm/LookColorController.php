@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Crm;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LookColor;
+use App\Exceptions\CannotDeleteException;
 
 class LookColorController extends Controller
 {
@@ -85,9 +86,13 @@ class LookColorController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        LookColor::destroy($id);
+        try {
+            LookColor::findOrFail($id)->delete();
+        } catch(CannotDeleteException $e) {
+            $request->session()->flash('alert-cannot-delete', true);
+        }
 
         return redirect()->route('look-colors.index');
     }
