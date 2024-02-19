@@ -394,6 +394,21 @@ return [
     */
 
     'plugins' => [
+        'bootstrapColorpicker' => [
+            'active' => true,
+            'files' => [
+                [
+                    'type' => 'js',
+                    'asset' => true,
+                    'location' => 'vendor/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js',
+                ],
+                [
+                    'type' => 'css',
+                    'asset' => true,
+                    'location' => 'vendor/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css',
+                ],
+            ],
+        ],
         'Datatables' => [
             'active' => true,
             'files' => [
