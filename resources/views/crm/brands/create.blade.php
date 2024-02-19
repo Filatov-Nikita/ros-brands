@@ -17,34 +17,54 @@
     <form method="POST" action="{{ route('brands.store') }}">
       @csrf
       <div class="card-body">
+        <x-adminlte-input
+          required
+          name="name"
+          id="name"
+          label="Название"
+          type="text"
+          enable-old-support
+        />
+        <x-adminlte-input
+          required
+          name="planeta_mall_id"
+          id="planeta_mall_id"
+          label="ID на сайте планета"
+          type="text"
+          enable-old-support
+        />
+        <x-adminlte-select
+          name="visible"
+          label="Видимость"
+          enable-old-support
+        >
+          <option value="1">Да</option>
+          <option value="0">Нет</option>
+        </x-adminlte-select>
         <div class="form-group">
-          <label for="name">Название</label>
-          <input required class="form-control" id="name" name="name" type="text" />
+          <label>Привязка к ТРЦ</label>
+          <div class="form-group">
+            @foreach($malls as $mall)
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="malls[]"
+                  id="mall-{{ $mall->id }}"
+                  value="{{ $mall->id }}"
+                >
+                <label class="form-check-label" for="mall-{{ $mall->id }}">
+                  {{ $mall->name }}
+                </label>
+              </div>
+            @endforeach
+          </div>
         </div>
-        <div class="form-group">
-          <label for="planeta_mall_id">ID на сайте планета</label>
-          <input required class="form-control" id="planeta_mall_id" name="planeta_mall_id" type="text" />
-        </div>
-        <div class="form-group">
-          <label>Видимость</label>
-          <select class="form-control" name="visible">
-            <option value="1">Да</option>
-            <option value="0">Нет</option>
-          </select>
-        </div>
-        <div class="form-group">
-          @foreach($malls as $mall)
-            <div class="form-check">
-              <input id="mall-{{ $mall->id }}" class="form-check-input" type="checkbox" name="malls[]" value="{{ $mall->id }}">
-              <label class="form-check-label" for="mall-{{ $mall->id }}">{{ $mall->name }}</label>
-            </div>
-          @endforeach
-        </div>
-        <div class="card-footer">
-          <button type="submit" class="btn btn-primary">
-            Отправить
-          </button>
-        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">
+          Отправить
+        </button>
       </div>
     </form>
   </div>

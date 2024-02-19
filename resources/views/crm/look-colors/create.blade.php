@@ -17,30 +17,43 @@
     <form method="POST" action="{{ route('look-colors.store') }}">
       @csrf
       <div class="card-body">
-        <div class="form-group">
-          <label for="name">Название</label>
-          <input required class="form-control" id="name" name="name" type="text" />
-        </div>
-        <div class="form-group">
-          <label for="color_in_hex">Код цвета</label>
-          <input required class="form-control" id="color_in_hex" name="color_in_hex" type="text" />
-        </div>
-        <div class="form-group">
-          <label>Видимость</label>
-          <select class="form-control" name="visible">
-            <option value="1">Да</option>
-            <option value="0">Нет</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="priority">Приоритет</label>
-          <input class="form-control" id="priority" name="priority" type="number" value="0" />
-        </div>
-        <div class="card-footer">
-          <button type="submit" class="btn btn-primary">
-            Отправить
-          </button>
-        </div>
+        <x-adminlte-input
+          required
+          name="name"
+          id="name"
+          label="Название"
+          type="text"
+          enable-old-support
+        />
+        <x-adminlte-input-color
+          required
+          name="color_in_hex"
+          id="color_in_hex"
+          label="Код цвета"
+          :config="[ 'autoInputFallback' => false ]"
+          enable-old-support
+        />
+        <x-adminlte-select
+          name="visible"
+          label="Видимость"
+          enable-old-support
+        >
+          <option value="1">Да</option>
+          <option value="0">Нет</option>
+        </x-adminlte-select>
+        <x-adminlte-input
+          name="priority"
+          id="priority"
+          label="Приоритет"
+          type="number"
+          value="0"
+          enable-old-support
+        />
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">
+          Отправить
+        </button>
       </div>
     </form>
   </div>

@@ -17,25 +17,39 @@
       @csrf
       @method('PUT')
       <div class="card-body">
-        <div class="form-group">
-          <label for="title">Заголовок</label>
-          <input class="form-control" id="title" name="title" type="text" value="{{ $banner->title }}" />
-        </div>
-        <div class="form-group">
-          <label for="href">Url</label>
-          <input class="form-control" id="href" name="href" type="text" value="{{ $banner->url }}" />
-        </div>
-        <div class="form-group">
-          <label>Видимость</label>
-          <select class="form-control" name="visible">
-            <option {{ $banner->visible === 1 ? 'selected' : '' }} value="1">Да</option>
-            <option {{ $banner->visible === 0 ? 'selected' : '' }} value="0">Нет</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="priority">Приоритет</label>
-          <input class="form-control" id="priority" name="priority" type="number" value="{{ $banner->priority }}" />
-        </div>
+        <x-adminlte-input
+          name="title"
+          id="title"
+          label="Заголовок"
+          type="text"
+          enable-old-support
+          value="{{ $banner->title }}"
+        />
+        <x-adminlte-input
+          name="href"
+          id="href"
+          label="Url"
+          type="text"
+          enable-old-support
+          value="{{ $banner->href }}"
+        />
+        <x-adminlte-select
+          name="visible"
+          label="Видимость"
+          enable-old-support
+          value="{{ $banner->visible }}"
+        >
+          <option value="1" @selected($banner->visible === 1)>Да</option>
+          <option value="0" @selected($banner->visible === 0)>Нет</option>
+        </x-adminlte-select>
+        <x-adminlte-input
+          name="priority"
+          id="priority"
+          label="Приоритет"
+          type="number"
+          enable-old-support
+          value="{{ $banner->priority }}"
+        />
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">

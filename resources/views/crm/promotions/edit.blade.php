@@ -17,25 +17,45 @@
       @csrf
       @method('PUT')
       <div class="card-body">
-        <div class="form-group">
-          <label for="name">Название</label>
-          <input required class="form-control" id="name" name="name" type="text" value="{{ $promotion->name }}" />
-        </div>
-        <div class="form-group">
-          <label for="title">Заголовок</label>
-          <input required class="form-control" id="title" name="title" type="text" value="{{ $promotion->title }}" />
-        </div>
-        <div class="form-group">
-          <label for="description">Описание</label>
-          <textarea class="form-control" id="description" name="description" rows="5">{{ $promotion->description }}</textarea>
-        </div>
-        <div class="form-group">
-          <label>Видимость</label>
-          <select class="form-control" name="visible">
-            <option {{ $promotion->visible === 1 ? 'selected' : '' }} value="1">Да</option>
-            <option {{ $promotion->visible === 0 ? 'selected' : '' }} value="0">Нет</option>
-          </select>
-        </div>
+        <x-adminlte-input
+          required
+          name="name"
+          id="name"
+          label="Название"
+          type="text"
+          enable-old-support
+          value="{{ $promotion->name }}"
+        />
+
+        <x-adminlte-input
+          required
+          name="title"
+          id="title"
+          label="Заголовок"
+          type="text"
+          enable-old-support
+          value="{{ $promotion->title }}"
+        />
+
+        <x-adminlte-textarea
+          required
+          label="Описание"
+          id="description"
+          name="description"
+          rows="5"
+          enable-old-support
+        >
+          {{ $promotion->description }}
+        </x-adminlte-textarea>
+
+        <x-adminlte-select
+          name="visible"
+          label="Видимость"
+          enable-old-support
+        >
+          <option value="1" @selected($promotion->visible === 1)>Да</option>
+          <option value="0" @selected($promotion->visible === 0)>Нет</option>
+        </x-adminlte-select>
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">

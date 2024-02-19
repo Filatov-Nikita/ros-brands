@@ -17,21 +17,32 @@
       @csrf
       @method('PUT')
       <div class="card-body">
-        <div class="form-group">
-          <label for="name">Название</label>
-          <input required class="form-control" id="name" name="name" type="text" value="{{ $look_category->name }}" />
-        </div>
-        <div class="form-group">
-          <label>Видимость</label>
-          <select class="form-control" name="visible">
-            <option {{ $look_category->visible === 1 ? 'selected' : '' }} value="1">Да</option>
-            <option {{ $look_category->visible === 0 ? 'selected' : '' }} value="0">Нет</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="priority">Приоритет</label>
-          <input class="form-control" id="priority" name="priority" type="number" value="{{ $look_category->priority }}" />
-        </div>
+        <x-adminlte-input
+          required
+          name="name"
+          id="name"
+          label="Название"
+          type="text"
+          enable-old-support
+          value="{{ $look_category->name }}"
+        />
+        <x-adminlte-select
+          name="visible"
+          label="Видимость"
+          enable-old-support
+          value="{{ $look_category->visible }}"
+        >
+          <option value="1" @selected($look_category->visible === 1)>Да</option>
+          <option value="0" @selected($look_category->visible === 0)>Нет</option>
+        </x-adminlte-select>
+        <x-adminlte-input
+          name="priority"
+          id="priority"
+          label="Приоритет"
+          type="number"
+          enable-old-support
+          value="{{ $look_category->priority }}"
+        />
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">

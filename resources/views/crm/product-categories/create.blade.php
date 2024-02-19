@@ -17,31 +17,21 @@
     <form method="POST" action="{{ route('product-categories.store') }}">
       @csrf
       <div class="card-body">
-        <div class="form-group">
-          <label for="name">Название</label>
-          <input required class="form-control" id="name" name="name" type="text" />
-        </div>
-        <p class="text-bold">Родительская категория</p>
-        <div class="form-group">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="cat_parent"
-              id="empty"
-              value=""
-            >
-            <label class="form-check-label" for="empty">
-              Нет родительской категории
-            </label>
-          </div>
-        </div>
+        <x-adminlte-input
+          required
+          name="name"
+          id="name"
+          label="Название"
+          type="text"
+          enable-old-support
+        />
+
         @include('crm.product-categories.parts.category-checkboxes', [ 'categories' => $categories ])
-        <div class="card-footer">
-          <button type="submit" class="btn btn-primary">
-            Отправить
-          </button>
-        </div>
+      </div>
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">
+          Отправить
+        </button>
       </div>
     </form>
   </div>

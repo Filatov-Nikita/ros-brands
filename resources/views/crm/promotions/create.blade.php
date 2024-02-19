@@ -17,25 +17,41 @@
     <form method="POST" action="{{ route('promotions.store') }}">
       @csrf
       <div class="card-body">
-        <div class="form-group">
-          <label for="name">Название</label>
-          <input required class="form-control" id="name" name="name" type="text" />
-        </div>
-        <div class="form-group">
-          <label for="title">Заголовок</label>
-          <input required class="form-control" id="title" name="title" type="text" />
-        </div>
-        <div class="form-group">
-          <label for="description">Описание</label>
-          <textarea class="form-control" id="description" name="description" rows="5"></textarea>
-        </div>
-        <div class="form-group">
-          <label>Видимость</label>
-          <select class="form-control" name="visible">
-            <option value="1">Да</option>
-            <option value="0">Нет</option>
-          </select>
-        </div>
+        <x-adminlte-input
+          required
+          name="name"
+          id="name"
+          label="Название"
+          type="text"
+          enable-old-support
+        />
+
+        <x-adminlte-input
+          required
+          name="title"
+          id="title"
+          label="Заголовок"
+          type="text"
+          enable-old-support
+        />
+
+        <x-adminlte-textarea
+          required
+          label="Описание"
+          id="description"
+          name="description"
+          rows="5"
+          enable-old-support
+        ></x-adminlte-textarea>
+
+        <x-adminlte-select
+          name="visible"
+          label="Видимость"
+          enable-old-support
+        >
+          <option value="1">Да</option>
+          <option value="0">Нет</option>
+        </x-adminlte-select>
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">

@@ -17,25 +17,36 @@
     <form method="POST" action="{{ route('banners.store') }}">
       @csrf
       <div class="card-body">
-        <div class="form-group">
-          <label for="title">Заголовок</label>
-          <input class="form-control" id="title" name="title" type="text" />
-        </div>
-        <div class="form-group">
-          <label for="href">Url</label>
-          <input class="form-control" id="href" name="href" type="text" />
-        </div>
-        <div class="form-group">
-          <label>Видимость</label>
-          <select class="form-control" name="visible">
-            <option value="1">Да</option>
-            <option value="0">Нет</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="priority">Приоритет</label>
-          <input class="form-control" id="priority" name="priority" type="number" value="0" />
-        </div>
+        <x-adminlte-input
+          name="title"
+          id="title"
+          label="Заголовок"
+          type="text"
+          enable-old-support
+        />
+        <x-adminlte-input
+          name="href"
+          id="href"
+          label="Url"
+          type="text"
+          enable-old-support
+        />
+        <x-adminlte-select
+          name="visible"
+          label="Видимость"
+          enable-old-support
+        >
+          <option value="1">Да</option>
+          <option value="0">Нет</option>
+        </x-adminlte-select>
+        <x-adminlte-input
+          name="priority"
+          id="priority"
+          label="Приоритет"
+          type="number"
+          value="0"
+          enable-old-support
+        />
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">

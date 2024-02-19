@@ -1,26 +1,10 @@
 @php
   $_level = isset($level) ? $level : 0;
-  $_checked = old('parent_cat', $checked ?? null);
-  $_disabled = $disabled ?? null;
+  $_checked = old('product_category_id', $checked ?? null);
 @endphp
 @if($_level === 0)
   <div class="form-group">
-    <label>Родительская категория</label>
-    <div class="form-group">
-      <div class="form-check">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="cat_parent"
-          id="empty"
-          value=""
-          @checked($_checked === null)
-        >
-        <label class="form-check-label" for="empty">
-          Нет родительской категории
-        </label>
-      </div>
-    </div>
+    <label>Категория товара</label>
 @endif
 <div class="form-group">
   @foreach($categories as $category)
@@ -28,21 +12,19 @@
       <input
         class="form-check-input"
         type="radio"
-        name="cat_parent"
+        name="product_category_id"
         id="cat-{{ $category['id'] }}"
         value="{{ $category['id'] }}"
-        @checked($_checked === $category['id'])
-        @disabled($_disabled === $category['id'])
+        @checked($_checked == $category['id'])
       >
       <label class="form-check-label" for="cat-{{ $category['id'] }}">
         {{ $category['name'] }}
       </label>
       @if(count($category['children']) > 0)
-        @include('crm.product-categories.parts.category-checkboxes', [
+        @include('crm.products.parts.category-list-form', [
           'categories' => $category['children'],
           'level' => $_level + 1,
           'checked' => $_checked,
-          'disabled' => $_disabled,
         ])
       @endif
     </div>

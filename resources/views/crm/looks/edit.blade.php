@@ -17,44 +17,57 @@
       @csrf
       @method('PUT')
       <div class="card-body">
-        <div class="form-group">
-          <label for="name">Название</label>
-          <input required class="form-control" id="name" name="name" type="text" value="{{ $look->name }}" />
-        </div>
-        <div class="form-group">
-          <label for="description">Описание</label>
-          <textarea class="form-control" id="description" name="description" rows="5">{{ $look->description }}</textarea>
-        </div>
-        <div class="form-group">
-          <label>Категория</label>
-          <select class="form-control" name="look_category_id">
-            @foreach($categories as $category)
-              <option value="{{ $category->id }}" @selected($look->look_category->id === $category->id)>
-                {{ $category->name }}
-              </option>
-            @endforeach
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Цвет</label>
-          <select class="form-control" name="look_color_id">
-            @foreach($colors as $color)
-              <option value="{{ $color->id }}" @selected($look->look_color->id === $color->id)>
-                {{ $color->name }}
-              </option>
-            @endforeach
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Стилист</label>
-          <select class="form-control" name="designer_id">
-            @foreach($designers as $designer)
-              <option value="{{ $designer->id }}" @selected($look->designer->id === $designer->id)>
-                {{ $designer->name }}
-              </option>
-            @endforeach
-          </select>
-        </div>
+        <x-adminlte-input
+          required
+          name="name"
+          id="name"
+          label="Название"
+          type="text"
+          enable-old-support
+          value="{{ $look->name }}"
+        />
+
+        <x-adminlte-textarea
+          required
+          label="Описание"
+          id="description"
+          name="description"
+          rows="5"
+          enable-old-support
+        >
+          {{ $look->description }}
+        </x-adminlte-textarea>
+
+        <x-adminlte-select
+          id="look_category_id"
+          name="look_category_id"
+          label="Категория"
+          enable-old-support
+          value="{{ $look->look_category_id }}"
+        >
+          <x-adminlte-options empty-option="Не выбрано" :options="$categories->pluck('name', 'id')->toArray()" :selected="$look->look_category_id" />
+        </x-adminlte-select>
+
+        <x-adminlte-select
+          id="look_color_id"
+          name="look_color_id"
+          label="Цвет"
+          enable-old-support
+          value="{{ $look->look_color_id }}"
+        >
+          <x-adminlte-options empty-option="Не выбрано" :options="$colors->pluck('name', 'id')->toArray()" :selected="$look->look_color_id" />
+        </x-adminlte-select>
+
+        <x-adminlte-select
+          id="designer_id"
+          name="designer_id"
+          label="Стилист"
+          enable-old-support
+          value="{{ $look->designer_id }}"
+        >
+          <x-adminlte-options empty-option="Не выбрано" :options="$designers->pluck('name', 'id')->toArray()" :selected="$look->designer_id" />
+        </x-adminlte-select>
+
         <div class="form-group">
           <label>Стиль образа</label>
           @foreach($styles as $style)
@@ -70,18 +83,32 @@
               <label class="form-check-label" for="style-{{ $style->id }}">{{ $style->name }}</label>
             </div>
           @endforeach
+          @error('look_style_ids')
+            <div class="invalid-feedback d-block">
+              {{ $errors->first('look_style_ids') }}
+            </div>
+          @enderror
         </div>
-        <div class="form-group">
-          <label>Видимость</label>
-          <select class="form-control" name="visible">
-            <option {{ $look->visible === 1 ? 'selected' : '' }} value="1">Да</option>
-            <option {{ $look->visible === 0 ? 'selected' : '' }} value="0">Нет</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="priority">Приоритет</label>
-          <input class="form-control" id="priority" name="priority" type="number" value="{{ $look->priority }}" />
-        </div>
+
+        <x-adminlte-input
+          required
+          name="priority"
+          id="priority"
+          label="Приоритет"
+          type="number"
+          enable-old-support
+          value="{{ $look->priority }}"
+        />
+
+        <x-adminlte-select
+          name="visible"
+          label="Видимость"
+          enable-old-support
+          value="{{ $look->visible }}"
+        >
+          <option value="1" @selected($look->visible === 1)>Да</option>
+          <option value="0" @selected($look->visible === 0)>Нет</option>
+        </x-adminlte-select>
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">

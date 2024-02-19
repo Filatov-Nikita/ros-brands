@@ -17,46 +17,80 @@
       @csrf
       @method('PUT')
       <div class="card-body">
-        <div class="form-group">
-          <label for="name">Название</label>
-          <input required class="form-control" id="name" name="name" type="text" value="{{ $product->name }}" />
-        </div>
-        <div class="form-group">
-          <label for="price">Цена</label>
-          <input required class="form-control" id="price" name="price" type="number" value="{{ $product->price }}" />
-        </div>
-        <div class="form-group">
-          <label for="consist">Состав</label>
-          <input required class="form-control" id="consist" name="consist" type="text" value="{{ $product->consist }}" />
-        </div>
-        <div class="form-group">
-          <label for="description">Описание</label>
-          <textarea class="form-control" id="description" name="description" rows="5">{{ $product->description }}</textarea>
-        </div>
-        <div class="form-group">
-          <label for="brand">Бренд</label>
-          <select id="brand" class="custom-select" name="brand_id">
-            @foreach($brands as $brand)
-              <option {{ $brand->id === $product->brand->id ? 'selected' : '' }} value="{{ $brand->id }}">{{ $brand->name }}</option>
-            @endforeach
-          </select>
-        </div>
-        <p class="text-bold">Категория товара</p>
-        @include('crm.products.parts.category-list-edit', [
+        <x-adminlte-input
+          required
+          name="name"
+          id="name"
+          label="Название"
+          type="text"
+          enable-old-support
+          value="{{ $product->name }}"
+        />
+
+        <x-adminlte-input
+          required
+          name="consist"
+          id="consist"
+          label="Состав"
+          type="text"
+          enable-old-support
+          value="{{ $product->consist }}"
+        />
+
+        <x-adminlte-textarea
+          required
+          label="Описание"
+          id="description"
+          name="description"
+          rows="5"
+          enable-old-support
+        >
+          {{ $product->description }}
+        </x-adminlte-textarea>
+
+        <x-adminlte-input
+          required
+          name="price"
+          id="price"
+          label="Цена"
+          type="number"
+          enable-old-support
+          value="{{ $product->price }}"
+        />
+
+        <x-adminlte-select
+          id="brand"
+          name="brand_id"
+          label="Бренд"
+          enable-old-support
+        >
+          <x-adminlte-options :options="$brands->pluck('name', 'id')->toArray()" selected="{{ $product->brand->id }}" />
+        </x-adminlte-select>
+
+        @include('crm.products.parts.category-list-form', [
           'categories' => $categories,
           'product' => $product,
+          'checked' => $product->product_category_id,
         ])
-        <div class="form-group">
-          <label>Видимость</label>
-          <select class="form-control" name="visible">
-            <option {{ $product->visible === 1 ? 'selected' : '' }} value="1">Да</option>
-            <option {{ $product->visible === 0 ? 'selected' : '' }} value="0">Нет</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="priority">Приоритет</label>
-          <input class="form-control" id="priority" name="priority" type="number" value="{{ $product->priority }}" />
-        </div>
+
+        <x-adminlte-input
+          required
+          name="priority"
+          id="priority"
+          label="Приоритет"
+          type="number"
+          enable-old-support
+          value="{{ $product->priority }}"
+        />
+        <x-adminlte-select
+          name="visible"
+          label="Видимость"
+          enable-old-support
+          value="{{ $product->visible }}"
+        >
+          <option value="1" @selected($product->visible === 1)>Да</option>
+          <option value="0" @selected($product->visible === 0)>Нет</option>
+        </x-adminlte-select>
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">

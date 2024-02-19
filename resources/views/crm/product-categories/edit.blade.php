@@ -17,30 +17,20 @@
       @csrf
       @method('PUT')
       <div class="card-body">
-        <div class="form-group">
-          <label for="name">Название</label>
-          <input required class="form-control" id="name" name="name" type="text" value="{{ $product_category->name }}" />
-        </div>
-        <p class="text-bold">Родительская категория</p>
-        <div class="form-group">
-          <div class="form-check">
-            <input
-              class="form-check-input"
-              type="radio"
-              name="cat_parent"
-              id="empty"
-              value=""
-              {{ $parent === null ? 'checked' : '' }}
-            >
-            <label class="form-check-label" for="empty">
-              Нет родительской категории
-            </label>
-          </div>
-        </div>
-        @include('crm.product-categories.parts.category-checkboxes-edit', [
+        <x-adminlte-input
+          required
+          name="name"
+          id="name"
+          label="Название"
+          type="text"
+          enable-old-support
+          value="{{ $product_category->name }}"
+        />
+
+        @include('crm.product-categories.parts.category-checkboxes', [
           'categories' => $categories,
-          'current_cat' => $product_category,
-          'parent_cat' => $parent
+          'checked' => optional($parent)->id,
+          'disabled' => $product_category->id,
         ])
       </div>
       <div class="card-footer">

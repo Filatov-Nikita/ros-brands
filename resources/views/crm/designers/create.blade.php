@@ -17,29 +17,46 @@
     <form method="POST" action="{{ route('designers.store') }}">
       @csrf
       <div class="card-body">
-        <div class="form-group">
-          <label for="name">Название</label>
-          <input required class="form-control" id="name" name="name" type="text" />
-        </div>
-        <div class="form-group">
-          <label for="position">Короткое описание</label>
-          <input required class="form-control" id="position" name="position" type="text" />
-        </div>
-        <div class="form-group">
-          <label for="description">Описание</label>
-          <textarea class="form-control" id="description" name="description" rows="5"></textarea>
-        </div>
-        <div class="form-group">
-          <label>Видимость</label>
-          <select class="form-control" name="visible">
-            <option value="1">Да</option>
-            <option value="0">Нет</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="priority">Приоритет</label>
-          <input class="form-control" id="priority" name="priority" type="number" value="0" />
-        </div>
+        <x-adminlte-input
+          required
+          name="name"
+          id="name"
+          label="Название"
+          type="text"
+          enable-old-support
+        />
+        <x-adminlte-input
+          required
+          name="position"
+          id="position"
+          label="Короткое описание"
+          type="text"
+          enable-old-support
+        />
+        <x-adminlte-textarea
+          required
+          label="Описание"
+          id="description"
+          name="description"
+          rows="5"
+          enable-old-support
+        ></x-adminlte-textarea>
+        <x-adminlte-select
+          name="visible"
+          label="Видимость"
+          enable-old-support
+        >
+          <option value="1">Да</option>
+          <option value="0">Нет</option>
+        </x-adminlte-select>
+        <x-adminlte-input
+          name="priority"
+          id="priority"
+          label="Приоритет"
+          type="number"
+          value="0"
+          enable-old-support
+        />
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn-primary">
