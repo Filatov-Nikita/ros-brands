@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\LookColorController;
 use App\Http\Controllers\Api\LookStyleController;
 use App\Http\Controllers\Api\BannerController;
 use App\Http\Controllers\Api\FavoriteController;
+use App\Http\Controllers\Api\LookDesignerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +65,11 @@ Route::resource('look-colors', LookColorController::class)->only([
 Route::resource('look-styles', LookStyleController::class)->only([
     'index',
 ]);
+
+Route::get('designers/{designer}/show-looks', [
+    LookDesignerController::class, 'looks_with_designer',
+])->name('designers.one.show-looks');
+
 
 Route::resource('banners', BannerController::class)->only([
     'index',
