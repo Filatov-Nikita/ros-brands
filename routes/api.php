@@ -12,6 +12,7 @@ use App\Http\Controllers\Api\LookController;
 use App\Http\Controllers\Api\LookColorController;
 use App\Http\Controllers\Api\LookStyleController;
 use App\Http\Controllers\Api\BannerController;
+use App\Http\Controllers\Api\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,3 +68,11 @@ Route::resource('look-styles', LookStyleController::class)->only([
 Route::resource('banners', BannerController::class)->only([
     'index',
 ]);
+
+Route::post('favorites/products/resolve-ids', [
+    FavoriteController::class, 'resolve_product_ids',
+])->name('favorites.products.resolve-ids');
+
+Route::post('favorites/looks/resolve-ids', [
+    FavoriteController::class, 'resolve_look_ids',
+])->name('favorites.looks.resolve-ids');
