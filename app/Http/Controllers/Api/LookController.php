@@ -103,4 +103,14 @@ class LookController extends Controller
     {
         //
     }
+
+    public function looks_similar(string $id)
+    {
+        $look = Look::findOrFail($id);
+
+        $looks = Look::whereRelation('look_color', 'id', $look->look_color_id)
+            ->where('id', '!=', $look->id);
+
+        return LookListResource::collection($looks->limit(4)->get());
+    }
 }

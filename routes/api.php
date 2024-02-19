@@ -67,6 +67,10 @@ Route::resource('look-styles', LookStyleController::class)->only([
     'index',
 ]);
 
+Route::get('looks/{look}/similar', [
+    LookController::class, 'looks_similar',
+])->name('looks.one.similar');
+
 Route::get('products/{product}/show-looks', [
     LookProductController::class, 'looks_with_product',
 ])->name('products.one.show-looks');
