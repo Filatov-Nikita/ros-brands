@@ -56,8 +56,9 @@ class LookController extends Controller
             'priority' => 'numeric',
             'look_color_id' => 'required|exists:App\Models\LookColor,id',
             'look_category_id' => 'required|exists:App\Models\LookCategory,id',
-            'designer_id' => 'exists:App\Models\Designer,id',
-            'look_style_ids.*' => 'required|exists:App\Models\LookStyle,id',
+            'designer_id' => 'nullable|exists:App\Models\Designer,id',
+            'look_style_ids' => 'required',
+            'look_style_ids.*' => 'exists:App\Models\LookStyle,id',
         ]);
 
         $look = Look::create(
@@ -133,7 +134,8 @@ class LookController extends Controller
             'priority' => 'numeric',
             'look_color_id' => 'required|exists:App\Models\LookColor,id',
             'look_category_id' => 'required|exists:App\Models\LookCategory,id',
-            'designer_id' => 'exists:App\Models\Designer,id',
+            'designer_id' => 'nullable|exists:App\Models\Designer,id',
+            'look_style_ids' => 'required',
             'look_style_ids.*' => 'required|exists:App\Models\LookStyle,id',
         ]);
 
