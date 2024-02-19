@@ -47,7 +47,11 @@ class ProductController extends Controller
 
         $query->where('visible', 1);
 
-        $query->with(['brand', 'images', 'thumbnail']);
+        $query->with(['brand', 'thumbnail']);
+
+        $query->with(['brand.promotions' => function ($query) {
+            $query->where('visible', 1);
+        }]);
 
         $result = $query->paginate(16);
 
