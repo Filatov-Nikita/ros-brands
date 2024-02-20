@@ -62,20 +62,30 @@
             <form action="{{ route('banners.image.update', [ 'banner' => $banner->id ]) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
-              <div class="custom-file">
-                <input name="image_file" type="file" class="custom-file-input" id="image-file">
-                <label class="custom-file-label" for="image-file">Выберите файл</label>
-              </div>
-              <button class="btn btn-primary mt-3" type="submit">Редактировать</button>
+              <x-adminlte-input-file
+                name="image_file"
+                legend="Открыть"
+                placeholder="Выберите файл"
+              >
+                <x-slot name="bottomSlot">
+                    <span class="text-sm text-gray">Максимум 1мб</span>
+                </x-slot>
+              </x-adminlte-input-file>
+              <button class="btn btn-primary" type="submit">Редактировать</button>
             </form>
           @else
           <form action="{{ route('banners.image.store', [ 'banner' => $banner->id ]) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="custom-file">
-              <input name="image_file" type="file" class="custom-file-input" id="image-file">
-              <label class="custom-file-label" for="image-file">Выберите файл</label>
-            </div>
-            <button class="btn btn-primary mt-3" type="submit">Загрузить</button>
+            <x-adminlte-input-file
+              name="image_file"
+              legend="Открыть"
+              placeholder="Выберите файл"
+            >
+              <x-slot name="bottomSlot">
+                  <span class="text-sm text-gray">Максимум 1мб</span>
+              </x-slot>
+            </x-adminlte-input-file>
+            <button class="btn btn-primary" type="submit">Загрузить</button>
           </form>
           @endif
         </div>
@@ -92,31 +102,33 @@
             <form action="{{ route('banners.image-mobile.update', [ 'banner' => $banner->id ]) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
-              <div class="custom-file">
-                <input name="image_mobile_file" type="file" class="custom-file-input" id="image-mobile-file">
-                <label class="custom-file-label" for="image-mobile-file">Выберите файл</label>
-              </div>
-              <button class="btn btn-primary mt-3" type="submit">Редактировать</button>
+              <x-adminlte-input-file
+                name="image_mobile_file"
+                legend="Открыть"
+                placeholder="Выберите файл"
+              >
+                <x-slot name="bottomSlot">
+                    <span class="text-sm text-gray">Максимум 512кб</span>
+                </x-slot>
+              </x-adminlte-input-file>
+              <button class="btn btn-primary" type="submit">Редактировать</button>
             </form>
           @else
           <form action="{{ route('banners.image-mobile.store', [ 'banner' => $banner->id ]) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="custom-file">
-              <input name="image_mobile_file" type="file" class="custom-file-input" id="image-mobile-file">
-              <label class="custom-file-label" for="image-mobile-file">Выберите файл</label>
-            </div>
-            <button class="btn btn-primary mt-3" type="submit">Загрузить</button>
+            <x-adminlte-input-file
+              name="image_mobile_file"
+              legend="Открыть"
+              placeholder="Выберите файл"
+            >
+              <x-slot name="bottomSlot">
+                  <span class="text-sm text-gray">Максимум 512кб</span>
+              </x-slot>
+            </x-adminlte-input-file>
+            <button class="btn btn-primary" type="submit">Загрузить</button>
           </form>
           @endif
         </div>
       </div>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-
 @stop

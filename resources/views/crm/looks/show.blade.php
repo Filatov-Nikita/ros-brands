@@ -95,20 +95,30 @@
             <form action="{{ route('looks.thumb.update', [ 'look' => $look->id ]) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
-              <div class="custom-file">
-                <input name="thumb_file" type="file" class="custom-file-input" id="thumb-file">
-                <label class="custom-file-label" for="thumb-file">Выберите файл</label>
-              </div>
-              <button class="btn btn-primary mt-3" type="submit">Редактировать</button>
+              <x-adminlte-input-file
+                name="thumb_file"
+                legend="Открыть"
+                placeholder="Выберите файл"
+              >
+                <x-slot name="bottomSlot">
+                    <span class="text-sm text-gray">Максимум 1мб</span>
+                </x-slot>
+              </x-adminlte-input-file>
+              <button class="btn btn-primary" type="submit">Редактировать</button>
             </form>
           @else
           <form action="{{ route('looks.thumb.store', [ 'look' => $look->id ]) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="custom-file">
-              <input name="thumb_file" type="file" class="custom-file-input" id="thumb-file">
-              <label class="custom-file-label" for="thumb-file">Выберите файл</label>
-            </div>
-            <button class="btn btn-primary mt-3" type="submit">Загрузить</button>
+            <x-adminlte-input-file
+              name="thumb_file"
+              legend="Открыть"
+              placeholder="Выберите файл"
+            >
+              <x-slot name="bottomSlot">
+                  <span class="text-sm text-gray">Максимум 1мб</span>
+              </x-slot>
+            </x-adminlte-input-file>
+            <button class="btn btn-primary" type="submit">Загрузить</button>
           </form>
           @endif
         </div>
@@ -122,11 +132,16 @@
             <form class="mb-4" action="{{ route('looks.image.update', [ 'look' => $look->id, 'image' => $image->id ]) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
-              <div class="custom-file">
-                <input name="image_file" type="file" class="custom-file-input">
-                <label class="custom-file-label">Выберите файл</label>
-              </div>
-              <button class="btn btn-primary mt-2" type="submit">Редактировать</button>
+              <x-adminlte-input-file
+                name="image_file"
+                legend="Открыть"
+                placeholder="Выберите файл"
+              >
+                <x-slot name="bottomSlot">
+                    <span class="text-sm text-gray">Максимум 2мб</span>
+                </x-slot>
+              </x-adminlte-input-file>
+              <button class="btn btn-primary" type="submit">Редактировать</button>
             </form>
             <form method="POST" action="{{ route('looks.image.remove', [ 'look' => $look->id, 'image' => $image->id ]) }}">
               @method('DELETE')
@@ -146,11 +161,16 @@
           <div class="card-body">
             <form action="{{ route('looks.image.store', [ 'look' => $look->id ]) }}" method="POST" enctype="multipart/form-data">
               @csrf
-              <div class="custom-file">
-                <input name="image_file" type="file" class="custom-file-input" id="image_file">
-                <label class="custom-file-label" for="image_file">Выберите файл</label>
-              </div>
-              <button class="btn btn-primary mt-3" type="submit">Загрузить</button>
+              <x-adminlte-input-file
+                name="image_file"
+                legend="Открыть"
+                placeholder="Выберите файл"
+              >
+                <x-slot name="bottomSlot">
+                    <span class="text-sm text-gray">Максимум 2мб</span>
+                </x-slot>
+              </x-adminlte-input-file>
+              <button class="btn btn-primary" type="submit">Загрузить</button>
             </form>
           </div>
         </div>
@@ -166,11 +186,16 @@
             </div>
             <form class="mb-4" action="{{ route('looks.video.update', [ 'look' => $look->id ]) }}" method="POST" enctype="multipart/form-data">
               @csrf
-              <div class="custom-file">
-                <input name="video_file" type="file" class="custom-file-input" id="video_file">
-                <label class="custom-file-label" for="video_file">Выберите файл</label>
-              </div>
-              <button class="btn btn-primary mt-3" type="submit">Редактировать</button>
+              <x-adminlte-input-file
+                name="video_file"
+                legend="Открыть"
+                placeholder="Выберите файл"
+              >
+                <x-slot name="bottomSlot">
+                    <span class="text-sm text-gray">mp4, максимум 5мб</span>
+                </x-slot>
+              </x-adminlte-input-file>
+              <button class="btn btn-primary" type="submit">Редактировать</button>
             </form>
             <form method="POST" action="{{ route('looks.video.remove', [ 'look' => $look->id ]) }}">
               @method('DELETE')
@@ -189,11 +214,16 @@
           <div class="card-body">
             <form action="{{ route('looks.video.store', [ 'look' => $look->id ]) }}" method="POST" enctype="multipart/form-data">
               @csrf
-              <div class="custom-file">
-                <input name="video_file" type="file" class="custom-file-input" id="video_file">
-                <label class="custom-file-label" for="video_file">Выберите файл</label>
-              </div>
-              <button class="btn btn-primary mt-3" type="submit">Загрузить</button>
+              <x-adminlte-input-file
+                name="video_file"
+                legend="Открыть"
+                placeholder="Выберите файл"
+              >
+                <x-slot name="bottomSlot">
+                    <span class="text-sm text-gray">mp4, максимум 5мб</span>
+                </x-slot>
+              </x-adminlte-input-file>
+              <button class="btn btn-primary" type="submit">Загрузить</button>
             </form>
           </div>
         </div>
@@ -247,10 +277,6 @@
       </div>
     </div>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
 @stop
 
 @section('js')

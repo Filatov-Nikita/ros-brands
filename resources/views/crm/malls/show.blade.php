@@ -63,30 +63,37 @@
             <div class="mb-3">
               <img style="width: 180px; height: auto" width="{{ $logotype->width }}" height="{{ $logotype->height }}" src="{{ $logotype->url }}" />
             </div>
+            <form action="{{ route('malls.image.update', [ 'mall' => $mall->id ]) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              @method('PUT')
+              <x-adminlte-input-file
+                name="logotype_file"
+                legend="Открыть"
+                placeholder="Выберите файл"
+              >
+                <x-slot name="bottomSlot">
+                    <span class="text-sm text-gray">Максимум 512кб</span>
+                </x-slot>
+              </x-adminlte-input-file>
+              <button class="btn btn-primary" type="submit">Редактировать</button>
+            </form>
+          @else
+            <form action="{{ route('malls.image.store', [ 'mall' => $mall->id ]) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              <x-adminlte-input-file
+                name="logotype_file"
+                legend="Открыть"
+                placeholder="Выберите файл"
+              >
+                <x-slot name="bottomSlot">
+                    <span class="text-sm text-gray">Максимум 512кб</span>
+                </x-slot>
+              </x-adminlte-input-file>
+              <button class="btn btn-primary" type="submit">Загрузить</button>
+            </form>
           @endif
-          <form action="{{ route('malls.attach_logotype', [ 'mall' => $mall->id ]) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="custom-file">
-              <input name="logotype_file" type="file" class="custom-file-input" id="logo-file">
-              <label class="custom-file-label" for="logo-file">Выберите файл</label>
-            </div>
-            <button class="btn btn-primary mt-3" type="submit">Загрузить</button>
-          </form>
         </div>
       </div>
     </div>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-  <script>
-    $('#mall-list-table').DataTable();
-    // new DataTable('', {
-    //     order: [[3, 'desc']]
-    // });
-  </script>
 @stop
