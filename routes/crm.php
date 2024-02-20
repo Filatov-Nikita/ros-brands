@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Crm\MallController;
 use App\Http\Controllers\Crm\BrandController;
+use App\Http\Controllers\Crm\BrandImageController;
 use App\Http\Controllers\Crm\ProductCategoryController;
 use App\Http\Controllers\Crm\ProductController;
 use App\Http\Controllers\Crm\ProductImageController;
@@ -24,9 +25,13 @@ Route::post('malls/{mall}/attach-logotype', [
 ])->name('malls.attach_logotype');
 
 Route::resource('brands', BrandController::class);
-Route::post('brands/{brand}/attach-logotype', [
-   BrandController::class, 'attach_logotype'
-])->name('brands.attach_logotype');
+Route::post('brands/{brand}/logotype', [
+   BrandImageController::class, 'store'
+])->name('brands.image.store');
+Route::put('brands/{brand}/logotype', [
+   BrandImageController::class, 'update'
+])->name('brands.image.update');
+
 Route::post('brands/{brand}/attach-promotions', [
    BrandController::class, 'attach_promotions'
 ])->name('brands.attach_promotions');

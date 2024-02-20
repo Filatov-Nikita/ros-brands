@@ -127,29 +127,6 @@ class BrandController extends Controller
         return redirect()->route('brands.index');
     }
 
-    public function attach_logotype(Request $request, string $id, CreateImage $createImage) {
-        $request->validate([
-            'logotype_file' => 'required',
-        ]);
-
-        $file = $request->file('logotype_file');
-
-        $brand = Brand::findOrFail($id);
-
-        $data = new CreateImageData(
-            image: $file,
-            relatable: $brand,
-            owner: $request->user(),
-            disk: 'public',
-            directory: 'brands',
-            type: 'logotype'
-        );
-
-        $createImage($data);
-
-        return to_route('brands.show', [ 'brand' => $id ]);
-    }
-
     public function attach_promotions(Request $request, string $id)
     {
         $request->validate([
