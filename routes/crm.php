@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Crm\MallController;
+use App\Http\Controllers\Crm\MallImageController;
 use App\Http\Controllers\Crm\BrandController;
 use App\Http\Controllers\Crm\BrandImageController;
 use App\Http\Controllers\Crm\ProductCategoryController;
@@ -20,9 +21,12 @@ use App\Http\Controllers\Crm\PromotionController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('malls', MallController::class);
-Route::post('malls/{mall}/attach-logotype', [
-   MallController::class, 'attach_logotype'
-])->name('malls.attach_logotype');
+Route::post('malls/{mall}/logotype', [
+   MallImageController::class, 'store'
+])->name('malls.image.store');
+Route::put('malls/{mall}/logotype', [
+   MallImageController::class, 'update'
+])->name('malls.image.update');
 
 Route::resource('brands', BrandController::class);
 Route::post('brands/{brand}/logotype', [

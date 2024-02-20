@@ -5,10 +5,6 @@ namespace App\Http\Controllers\Crm;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Mall;
-use Illuminate\Support\Facades\Storage;
-use App\Models\Attachment;
-use App\Models\DataTransferObjects\Attachments\CreateImageData;
-use App\Models\Actions\Attachments\CreateImage;
 
 class MallController extends Controller
 {
@@ -103,28 +99,5 @@ class MallController extends Controller
         Mall::destroy($id);
 
         return redirect()->route('malls.index');
-    }
-
-    public function attach_logotype(Request $request, string $id, CreateImage $createImage) {
-        $request->validate([
-            'logotype_file' => 'required',
-        ]);
-
-        $file = $request->file('logotype_file');
-
-        $mall = Mall::findOrFail($id);
-
-        $data = new CreateImageData(
-            image: $file,
-            relatable: $mall,
-            owner: $request->user(),
-            disk: 'public',
-            directory: 'malls',
-            type: 'logotype'
-        );
-
-        $createImage($data);
-
-        return to_route('malls.show', [ 'mall' => $id ]);
     }
 }
