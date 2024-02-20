@@ -14,7 +14,7 @@ class DesignerImageController extends Controller
 {
     public function store(Request $request, string $designer_id, CreateImage $createImage) {
         $request->validate([
-            'image_file' => 'required',
+            'image_file' => 'required|image|max:1024',
         ]);
 
         $file = $request->file('image_file');
@@ -42,7 +42,7 @@ class DesignerImageController extends Controller
         CreateImage $createImage,
     ) {
         $request->validate([
-            'image_file' => 'required',
+            'image_file' => 'required|image|max:1024',
         ]);
 
         $file = $request->file('image_file');

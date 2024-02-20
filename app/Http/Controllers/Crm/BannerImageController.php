@@ -14,7 +14,7 @@ class BannerImageController extends Controller
 {
     public function store_image(Request $request, string $banner_id, CreateImage $createImage) {
         $request->validate([
-            'image_file' => 'required',
+            'image_file' => 'required|image|max:1024',
         ]);
 
         $file = $request->file('image_file');
@@ -42,7 +42,7 @@ class BannerImageController extends Controller
         CreateImage $createImage,
     ) {
         $request->validate([
-            'image_file' => 'required',
+            'image_file' => 'required|image|max:1024',
         ]);
 
         $file = $request->file('image_file');
@@ -72,7 +72,7 @@ class BannerImageController extends Controller
 
     public function store_image_mobile(Request $request, string $banner_id, CreateImage $createImage) {
         $request->validate([
-            'image_mobile_file' => 'required',
+            'image_mobile_file' => 'required|image|max:512',
         ]);
 
         $file = $request->file('image_mobile_file');
@@ -100,7 +100,7 @@ class BannerImageController extends Controller
         CreateImage $createImage,
     ) {
         $request->validate([
-            'image_mobile_file' => 'required',
+            'image_mobile_file' => 'required|image|max:512',
         ]);
 
         $file = $request->file('image_mobile_file');

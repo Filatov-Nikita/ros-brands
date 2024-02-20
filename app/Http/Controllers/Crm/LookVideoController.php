@@ -14,7 +14,7 @@ class LookVideoController extends Controller
 {
     public function store_video(Request $request, string $look_id, CreateImage $createImage) {
         $request->validate([
-            'video_file' => 'required',
+            'video_file' => 'required|file|mimes:mp4|extensions:mp4|max:5120',
         ]);
 
         $file = $request->file('video_file');
@@ -58,7 +58,7 @@ class LookVideoController extends Controller
         CreateImage $createImage,
     ) {
         $request->validate([
-            'video_file' => 'required',
+            'video_file' => 'required|file|mimes:mp4|extensions:mp4|max:5120',
         ]);
 
         $file = $request->file('video_file');

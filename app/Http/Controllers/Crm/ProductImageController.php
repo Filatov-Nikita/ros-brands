@@ -14,7 +14,7 @@ class ProductImageController extends Controller
 {
     public function store_thumb(Request $request, string $product_id, CreateImage $createImage) {
         $request->validate([
-            'thumb_file' => 'required',
+            'thumb_file' => 'required|image|max:1024',
         ]);
 
         $file = $request->file('thumb_file');
@@ -42,7 +42,7 @@ class ProductImageController extends Controller
         CreateImage $createImage,
     ) {
         $request->validate([
-            'thumb_file' => 'required',
+            'thumb_file' => 'required|image|max:1024',
         ]);
 
         $file = $request->file('thumb_file');
@@ -72,7 +72,7 @@ class ProductImageController extends Controller
 
     public function store_image(Request $request, string $product_id, CreateImage $createImage) {
         $request->validate([
-            'image_file' => 'required',
+            'image_file' => 'required|image|max:1024',
         ]);
 
         $file = $request->file('image_file');
@@ -118,7 +118,7 @@ class ProductImageController extends Controller
         CreateImage $createImage,
     ) {
         $request->validate([
-            'image_file' => 'required',
+            'image_file' => 'required|image|max:1024',
         ]);
 
         $file = $request->file('image_file');
