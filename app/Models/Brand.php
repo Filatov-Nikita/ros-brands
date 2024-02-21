@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use App\Exceptions\CannotDeleteException;
 
 class Brand extends Model
 {
@@ -21,7 +22,7 @@ class Brand extends Model
 
     public function products(): HasMany
     {
-        return $this->hasMany(Products::class);
+        return $this->hasMany(Product::class);
     }
 
     public function logotype(): MorphOne
@@ -32,5 +33,18 @@ class Brand extends Model
     public function promotions(): BelongsToMany
     {
         return $this->belongsToMany(Promotion::class);
+    }
+
+    protected static function booted(): void
+    {
+        static::deleting(function(Brand $brand) {
+            if($brand->products()->count() > 0) {
+                throw new CannotDeleteException();
+            }
+
+            if($brand->promotions()->count() > 0) {
+                throw new CannotDeleteException();
+            }
+        });
     }
 }

@@ -3,6 +3,9 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
+  <x-rejected-delete-action>
+    Бренд уже используется в других записях.
+  </x-rejected-delete-action>
   <h1>Список Брендов</h1>
 @stop
 

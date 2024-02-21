@@ -12,6 +12,7 @@ use App\Models\Attachment;
 use App\Models\Promotion;
 use App\Models\DataTransferObjects\Attachments\CreateImageData;
 use App\Models\Actions\Attachments\CreateImage;
+use App\Exceptions\CannotDeleteException;
 
 class BrandController extends Controller
 {
@@ -120,9 +121,13 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        Brand::destroy($id);
+        try {
+            Brand::findOrFail($id)->delete();
+        } catch(CannotDeleteException $e) {
+            $request->session()->flash('alert-cannot-delete', true);
+        }
 
         return redirect()->route('brands.index');
     }
