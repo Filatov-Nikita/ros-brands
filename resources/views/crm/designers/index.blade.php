@@ -3,7 +3,10 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-  <h1>Список стилей образов</h1>
+  <x-rejected-delete-action>
+    Стилист уже используется в других записях.
+  </x-rejected-delete-action>
+  <h1>Список стилистов</h1>
 @stop
 
 @section('content')

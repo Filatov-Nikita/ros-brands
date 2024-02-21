@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Crm;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\LookCategory;
+use App\Exceptions\CannotDeleteException;
 
 class LookCategoryController extends Controller
 {
@@ -85,9 +86,13 @@ class LookCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        LookCategory::destroy($id);
+        try {
+            LookCategory::findOrFail($id)->delete();
+        } catch(CannotDeleteException $e) {
+            $request->session()->flash('alert-cannot-delete', true);
+        }
 
         return redirect()->route('look-categories.index');
     }

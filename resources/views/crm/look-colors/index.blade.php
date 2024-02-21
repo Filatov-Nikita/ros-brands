@@ -3,15 +3,9 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-  @if(session('alert-cannot-delete'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      Цвет уже используется в других записях.
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  @endif
-
+  <x-rejected-delete-action>
+    Цвет уже используется в других записях.
+  </x-rejected-delete-action>
   <h1>Список цветов для образа</h1>
 @stop
 
