@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Crm;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ProductCategory;
+use App\Exceptions\CannotDeleteException;
 
 class ProductCategoryController extends Controller
 {
@@ -103,9 +104,13 @@ class ProductCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        ProductCategory::destroy($id);
+        try {
+            ProductCategory::findOrFail($id)->delete();
+        } catch(CannotDeleteException $e) {
+            $request->session()->flash('alert-cannot-delete', true);
+        }
 
         return redirect()->route('product-categories.index');
     }
