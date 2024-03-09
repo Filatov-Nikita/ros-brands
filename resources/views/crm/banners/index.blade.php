@@ -48,13 +48,17 @@
             <a class="btn btn-default mr-2" href="{{ route('banners.edit', [ 'banner' => $banner->id ]) }}" alt="изменить">
               <i class="fas fa-edit"></i>
             </a>
-            <form method="POST" action="{{ route('banners.destroy', [ 'banner' => $banner->id ]) }}">
-              @method('DELETE')
-              @csrf
-              <button class="btn btn-default bg-dander" type="submit" alt="удалить">
-                <i class="fas fa-trash"></i>
-              </button>
-            </form>
+            <x-adminlte-modal id="modal-destory-{{ $banner->id }}" title="Вы уверены, что хотите удалить запись?" theme="danger">
+              <x-slot name="footerSlot">
+                <x-adminlte-button label="Отмена" data-dismiss="modal"/>
+                <form method="POST" action="{{ route('banners.destroy', [ 'banner' => $banner->id ]) }}">
+                  @method('DELETE')
+                  @csrf
+                  <x-adminlte-button theme="danger" label="Удалить навсегда" type="submit" alt="удалить" />
+                </form>
+              </x-slot>
+            </x-adminlte-modal>
+            <x-adminlte-button icon="fas fa-trash" data-toggle="modal" data-target="#modal-destory-{{ $banner->id }}" />
           </div>
         </th>
       </tr>

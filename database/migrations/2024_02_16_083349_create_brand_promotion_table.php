@@ -16,11 +16,13 @@ return new class extends Migration
 
             $table->foreignId('brand_id')
                 ->constrained()
-                ->restrictOnDelete();
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->foreignId('promotion_id')
                 ->constrained()
-                ->restrictOnDelete();
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->timestamps();
         });
