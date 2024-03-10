@@ -3,9 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-  <div>
-    <a href="{{ route('malls.index') }}">К списку</a>
-  </div>
+  <x-card-toolbar resource_name="malls" resource="{{ $mall->id }}" />
 @stop
 
 @section('content')
@@ -13,7 +11,7 @@
     <div class="col col-6">
       <div class="card">
         <div class="card-header">
-          <h1>ТРЦ {{ $mall->name }} - {{ $mall->city }}</h1>
+          <h1>ТРЦ: {{ $mall->name }} - {{ $mall->city }}</h1>
         </div>
         <table class="table table-striped">
           <tbody>

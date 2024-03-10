@@ -3,9 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-  <div>
-    <a href="{{ route('designers.index') }}">К списку</a>
-  </div>
+  <x-card-toolbar resource_name="designers" resource="{{ $designer->id }}" />
 @stop
 
 @section('content')
@@ -13,7 +11,7 @@
     <div class="col col-6">
       <div class="card">
         <div class="card-header">
-          <h1>Стилист {{ $designer->name }}</h1>
+          <h1>Стилист: {{ $designer->name }}</h1>
         </div>
         <table class="table table-striped">
           <tbody>

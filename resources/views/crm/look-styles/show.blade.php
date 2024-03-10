@@ -3,15 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-  <div>
-    <a href="{{ route('look-styles.index') }}">К списку</a>
-  </div>
+  <x-card-toolbar resource_name="look-styles" resource="{{ $look_style->id }}" />
 @stop
 
 @section('content')
   <div class="card col col-6">
     <div class="card-header">
-      <h1>Категория {{ $look_style->name }}</h1>
+      <h1>Стиль: {{ $look_style->name }}</h1>
     </div>
     <table class="table table-striped">
       <tbody>

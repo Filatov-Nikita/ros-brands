@@ -3,9 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-  <div>
-    <a href="{{ route('product-categories.index') }}">К списку</a>
-  </div>
+  <x-card-toolbar resource_name="product-categories" resource="{{ $category->id }}" />
 @stop
 
 @section('content')

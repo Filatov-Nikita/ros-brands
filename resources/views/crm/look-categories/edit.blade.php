@@ -3,9 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-  <div class="mb-3">
-    <a class="" href="{{ route('look-categories.index') }}">К списку</a>
-  </div>
+  <x-edit-toolbar resource_name="look-categories" resource="{{ $look_category->id }}" />
 @stop
 
 @section('content')

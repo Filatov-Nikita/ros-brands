@@ -3,15 +3,13 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-  <div>
-    <a href="{{ route('promotions.index') }}">К списку</a>
-  </div>
+  <x-card-toolbar resource_name="promotions" resource="{{ $promotion->id }}" />
 @stop
 
 @section('content')
   <div class="card col col-6">
     <div class="card-header">
-      <h1>Промоакция {{ $promotion->name }}</h1>
+      <h1>Промоакция: {{ $promotion->name }}</h1>
     </div>
     <table class="table table-striped">
       <tbody>

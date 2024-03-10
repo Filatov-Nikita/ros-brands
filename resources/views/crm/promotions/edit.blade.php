@@ -3,9 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-  <div class="mb-3">
-    <a class="" href="{{ route('promotions.index') }}">К списку</a>
-  </div>
+  <x-edit-toolbar resource_name="promotions" resource="{{ $promotion->id }}" />
 @stop
 
 @section('content')
