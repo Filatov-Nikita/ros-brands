@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -299,6 +299,11 @@ return [
         // Sidebar items:
 
         ['header' => 'Справочники'],
+        [
+            'text' => 'Пользователи',
+            'url'  => 'crm/users',
+            'icon' => 'fas fa-fw fa-user',
+        ],
         [
             'text' => 'Моллы',
             'url'  => 'crm/malls',

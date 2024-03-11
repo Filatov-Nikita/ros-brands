@@ -18,6 +18,7 @@ use App\Http\Controllers\Crm\LookController;
 use App\Http\Controllers\Crm\LookImageController;
 use App\Http\Controllers\Crm\LookVideoController;
 use App\Http\Controllers\Crm\PromotionController;
+use App\Http\Controllers\Crm\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('malls', MallController::class);
@@ -140,3 +141,5 @@ Route::put('looks/{look}/video', [
 
 
 Route::resource('promotions', PromotionController::class);
+
+Route::resource('users', UserController::class);
