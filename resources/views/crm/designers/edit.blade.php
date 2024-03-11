@@ -19,10 +19,19 @@
           required
           name="name"
           id="name"
-          label="Название"
+          label="Имя"
           type="text"
           enable-old-support
           value="{{ $designer->name }}"
+        />
+        <x-adminlte-input
+          required
+          name="declinated_name"
+          id="declinated_name"
+          label="Имя в род. падеже"
+          type="text"
+          enable-old-support
+          value="{{ $designer->declinated_name }}"
         />
         <x-adminlte-input
           required

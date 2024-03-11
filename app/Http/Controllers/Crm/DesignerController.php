@@ -36,6 +36,7 @@ class DesignerController extends Controller
     {
         $values = $request->validate([
             'name' => 'required',
+            'declinated_name' => 'required',
             'position' => 'required',
             'description' => 'required',
             'visible' => 'boolean',
@@ -77,6 +78,7 @@ class DesignerController extends Controller
     {
         $values = $request->validate([
             'name' => 'required',
+            'declinated_name' => 'required',
             'position' => 'required',
             'description' => 'required',
             'visible' => 'boolean',

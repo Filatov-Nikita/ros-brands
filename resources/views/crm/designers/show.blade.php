@@ -20,8 +20,12 @@
               <th>{{ $designer->id }}</th>
             </tr>
             <tr>
-              <th>Название</th>
+              <th>Имя</th>
               <th>{{ $designer->name }}</th>
+            </tr>
+            <tr>
+              <th>Имя в род. падеже</th>
+              <th>{{ $designer->declinated_name }}</th>
             </tr>
             <tr>
               <th>Короткое описание</th>

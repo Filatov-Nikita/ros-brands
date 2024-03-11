@@ -27,6 +27,7 @@ return new class extends Migration
                 ->restrictOnDelete();
 
             $table->foreignId('designer_id')
+                ->nullable()
                 ->constrained()
                 ->restrictOnDelete();
 

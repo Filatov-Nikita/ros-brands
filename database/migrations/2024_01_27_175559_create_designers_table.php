@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('designers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('declinated_name');
             $table->string('position');
             $table->text('description');
             $table->integer('priority')->default(0);

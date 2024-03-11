@@ -17,6 +17,7 @@ class DesignerListResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
+            'declinated_name' => $this->declinated_name,
             'position' => $this->position,
             'image' => new ImageResource($this->image),
         ];
