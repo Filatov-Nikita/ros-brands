@@ -1,12 +1,12 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Категории образов')
 
 @section('content_header')
   <x-rejected-delete-action>
     Категория уже используется в других записях.
   </x-rejected-delete-action>
-  <h1>Список категорий образов</h1>
+  <h1>Категории образов</h1>
 @stop
 
 @section('content')
@@ -54,17 +54,17 @@
     @endforeach
   </tbody>
 </table>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+<div class="pb-4"></div>
 @stop
 
 @section('js')
   <script>
-    $('#category-list-table').DataTable();
-    // new DataTable('', {
-    //     order: [[3, 'desc']]
-    // });
+    $('#category-list-table').DataTable(
+      {
+        language: {
+          url: '//cdn.datatables.net/plug-ins/2.0.2/i18n/ru.json',
+        }
+      }
+    );
   </script>
 @stop

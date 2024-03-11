@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Образы | #' . $look->id . ' - ' . $look->name)
 
 @section('content_header')
   <x-card-toolbar resource_name="looks" resource="{{ $look->id }}" />
@@ -11,7 +11,7 @@
     <div class="col col-6">
       <div class="card">
         <div class="card-header">
-          <h1>Образ: {{ $look->name }}</h1>
+          <h1>Образ: #{{$look->id}} - {{ $look->name }}</h1>
         </div>
         <table class="table table-striped">
           <tbody>
@@ -267,7 +267,7 @@
                 @endforeach
               </tbody>
             </table>
-            <button class="btn btn-primary" type="submit">
+            <button class="btn btn-primary mt-4" type="submit">
               Привязать
             </button>
           </form>
@@ -279,6 +279,12 @@
 
 @section('js')
   <script>
-    $('#product-list-table').DataTable();
+    $('#product-list-table').DataTable(
+      {
+        language: {
+          url: '//cdn.datatables.net/plug-ins/2.0.2/i18n/ru.json',
+        }
+      }
+    );
   </script>
 @stop

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Моллы | Редактировать | ' . $mall->name . ' - ' . $mall->city)
 
 @section('content_header')
   <x-edit-toolbar resource_name="malls" resource="{{ $mall->id }}" />
@@ -9,7 +9,7 @@
 @section('content')
   <div class="card card-primary">
     <div class="card-header">
-      <h2 class="card-title">{{ $mall->name }}</h2>
+      <h2 class="card-title">Молл: {{ $mall->name }} - {{ $mall->city }}</h2>
     </div>
     <form method="POST" action="{{ route('malls.update', [ 'mall' => $mall->id ]) }}">
       @csrf
@@ -76,12 +76,4 @@
       </div>
     </form>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-
 @stop

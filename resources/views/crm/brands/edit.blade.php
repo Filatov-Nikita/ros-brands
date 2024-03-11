@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Баннеры | Редактировать | ' . $brand->name)
 
 @section('content_header')
   <x-edit-toolbar resource_name="brands" resource="{{ $brand->id }}" />
@@ -9,7 +9,7 @@
 @section('content')
   <div class="card card-primary">
     <div class="card-header">
-      <h2 class="card-title">{{ $brand->name }}</h2>
+      <h2 class="card-title">Бренд: {{ $brand->name }}</h2>
     </div>
     <form method="POST" action="{{ route('brands.update', [ 'brand' => $brand->id ]) }}">
       @csrf
@@ -70,12 +70,4 @@
       </div>
     </form>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-
 @stop

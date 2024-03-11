@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Стили образов | ' . $look_style->name)
 
 @section('content_header')
   <x-card-toolbar resource_name="look-styles" resource="{{ $look_style->id }}" />
@@ -9,7 +9,7 @@
 @section('content')
   <div class="card col col-6">
     <div class="card-header">
-      <h1>Стиль: {{ $look_style->name }}</h1>
+      <h1>Стиль образа: {{ $look_style->name }}</h1>
     </div>
     <table class="table table-striped">
       <tbody>
@@ -32,12 +32,4 @@
       </tbody>
     </table>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-
 @stop

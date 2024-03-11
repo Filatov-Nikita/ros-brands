@@ -1,18 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Спецпредложения | Cоздать')
 
 @section('content_header')
   <div class="mb-3">
     <a href="{{ route('promotions.index') }}">К списку</a>
   </div>
-  <h1>Создать промоакцию</h1>
+  <h1>Создать спецпредложение</h1>
 @stop
 
 @section('content')
   <div class="card card-primary">
     <div class="card-header">
-      <h2 class="card-title">Промоакция</h2>
+      <h2 class="card-title">Спецпредложение</h2>
     </div>
     <form method="POST" action="{{ route('promotions.store') }}">
       @csrf
@@ -60,12 +60,4 @@
       </div>
     </form>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-
 @stop

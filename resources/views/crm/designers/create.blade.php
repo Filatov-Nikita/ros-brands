@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Стилисты | Cоздать')
 
 @section('content_header')
   <div class="mb-3">
@@ -65,12 +65,4 @@
       </div>
     </form>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-
 @stop

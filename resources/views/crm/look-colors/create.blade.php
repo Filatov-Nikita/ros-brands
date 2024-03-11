@@ -1,18 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Цвета образов | Создать')
 
 @section('content_header')
   <div class="mb-3">
     <a href="{{ route('look-colors.index') }}">К списку</a>
   </div>
-  <h1>Создать цвет</h1>
+  <h1>Создать цвет образа</h1>
 @stop
 
 @section('content')
   <div class="card card-primary">
     <div class="card-header">
-      <h2 class="card-title">Цвет</h2>
+      <h2 class="card-title">Цвет образа</h2>
     </div>
     <form method="POST" action="{{ route('look-colors.store') }}">
       @csrf

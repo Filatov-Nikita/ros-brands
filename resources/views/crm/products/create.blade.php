@@ -1,12 +1,12 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Товары | Cоздать')
 
 @section('content_header')
   <div class="mb-3">
     <a href="{{ route('products.index') }}">К списку</a>
   </div>
-  <h1>Создать Товар</h1>
+  <h1>Создать товар</h1>
 @stop
 
 @section('content')

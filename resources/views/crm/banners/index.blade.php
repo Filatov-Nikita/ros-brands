@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Баннеры')
 
 @section('content_header')
   <h1>Баннеры</h1>
@@ -65,17 +65,17 @@
     @endforeach
   </tbody>
 </table>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+<div class="pb-4"></div>
 @stop
 
 @section('js')
   <script>
-    $('#banner-list-table').DataTable();
-    // new DataTable('', {
-    //     order: [[3, 'desc']]
-    // });
+    $('#banner-list-table').DataTable(
+      {
+        language: {
+          url: '//cdn.datatables.net/plug-ins/2.0.2/i18n/ru.json',
+        }
+      }
+    );
   </script>
 @stop

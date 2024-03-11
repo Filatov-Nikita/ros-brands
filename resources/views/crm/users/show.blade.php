@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Пользователи | ' . $user->name)
 
 @section('content_header')
   <div class="d-flex justify-content-between">

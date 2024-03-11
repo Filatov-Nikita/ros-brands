@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Стили образов | Редактировать | ' . $look_style->name)
 
 @section('content_header')
   <x-edit-toolbar resource_name="look-styles" resource="{{ $look_style->id }}" />
@@ -9,7 +9,7 @@
 @section('content')
   <div class="card card-primary">
     <div class="card-header">
-      <h2 class="card-title">{{ $look_style->name }}</h2>
+      <h2 class="card-title">Стиль образа: {{ $look_style->name }}</h2>
     </div>
     <form method="POST" action="{{ route('look-styles.update', [ 'look_style' => $look_style->id ]) }}">
       @csrf
@@ -49,12 +49,4 @@
       </div>
     </form>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-
 @stop

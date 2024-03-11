@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Категории товаров | Создать')
 
 @section('content_header')
   <div class="mb-3">
@@ -12,7 +12,7 @@
 @section('content')
   <div class="card card-primary">
     <div class="card-header">
-      <h2 class="card-title">Новая категория</h2>
+      <h2 class="card-title">Категория товара</h2>
     </div>
     <form method="POST" action="{{ route('product-categories.store') }}">
       @csrf
@@ -35,17 +35,4 @@
       </div>
     </form>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-  <script>
-    $('#brand-list-table').DataTable();
-    // new DataTable('', {
-    //     order: [[3, 'desc']]
-    // });
-  </script>
 @stop

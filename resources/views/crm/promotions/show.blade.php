@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Спецпредложения | ' . $promotion->name)
 
 @section('content_header')
   <x-card-toolbar resource_name="promotions" resource="{{ $promotion->id }}" />
@@ -9,7 +9,7 @@
 @section('content')
   <div class="card col col-6">
     <div class="card-header">
-      <h1>Промоакция: {{ $promotion->name }}</h1>
+      <h1>Спецпредложение: {{ $promotion->name }}</h1>
     </div>
     <table class="table table-striped">
       <tbody>
@@ -36,17 +36,4 @@
       </tbody>
     </table>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-  <script>
-    $('#brand-list-table').DataTable();
-    // new DataTable('', {
-    //     order: [[3, 'desc']]
-    // });
-  </script>
 @stop

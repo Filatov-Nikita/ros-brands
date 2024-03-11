@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Категории образов | ' . $look_category->name)
 
 @section('content_header')
   <x-card-toolbar resource_name="look-categories" resource="{{ $look_category->id }}" />
@@ -32,12 +32,4 @@
       </tbody>
     </table>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-
 @stop

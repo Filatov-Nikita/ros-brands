@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Моллы | ' . $mall->name . ' - ' . $mall->city)
 
 @section('content_header')
   <x-card-toolbar resource_name="malls" resource="{{ $mall->id }}" />
@@ -11,7 +11,7 @@
     <div class="col col-6">
       <div class="card">
         <div class="card-header">
-          <h1>ТРЦ: {{ $mall->name }} - {{ $mall->city }}</h1>
+          <h1>Молл: {{ $mall->name }} - {{ $mall->city }}</h1>
         </div>
         <table class="table table-striped">
           <tbody>

@@ -1,18 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Образы | Cоздать')
 
 @section('content_header')
   <div class="mb-3">
     <a href="{{ route('looks.index') }}">К списку</a>
   </div>
-  <h1>Создать стиль образа</h1>
+  <h1>Создать образ</h1>
 @stop
 
 @section('content')
   <div class="card card-primary">
     <div class="card-header">
-      <h2 class="card-title">Стиль</h2>
+      <h2 class="card-title">Образ</h2>
     </div>
     <form method="POST" action="{{ route('looks.store') }}">
       @csrf
@@ -103,12 +103,4 @@
       </div>
     </form>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-
 @stop

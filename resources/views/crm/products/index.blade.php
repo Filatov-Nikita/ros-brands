@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Товары')
 
 @section('content_header')
-  <h1>Список Товаров</h1>
+  <h1>Товары</h1>
 @stop
 
 @section('content')
@@ -57,17 +57,17 @@
     @endforeach
   </tbody>
 </table>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+<div class="pb-4"></div>
 @stop
 
 @section('js')
   <script>
-    $('#product-list-table').DataTable();
-    // new DataTable('', {
-    //     order: [[3, 'desc']]
-    // });
+    $('#product-list-table').DataTable(
+      {
+        language: {
+          url: '//cdn.datatables.net/plug-ins/2.0.2/i18n/ru.json',
+        }
+      }
+    );
   </script>
 @stop

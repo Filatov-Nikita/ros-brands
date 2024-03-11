@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Товары | Редактировать | ' . $product->brand->name . ' - ' . $product->name)
 
 @section('content_header')
   <x-edit-toolbar resource_name="products" resource="{{ $product->id }}" />
@@ -9,7 +9,7 @@
 @section('content')
   <div class="card card-primary">
     <div class="card-header">
-      <h2 class="card-title">{{ $product->name }}</h2>
+      <h2 class="card-title">Товар: {{ $product->brand->name }} - {{ $product->name }}</h2>
     </div>
     <form method="POST" action="{{ route('products.update', [ 'product' => $product->id ]) }}">
       @csrf

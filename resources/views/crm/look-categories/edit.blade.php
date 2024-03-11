@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Категории образов | Редактировать | ' . $look_category->name)
 
 @section('content_header')
   <x-edit-toolbar resource_name="look-categories" resource="{{ $look_category->id }}" />
@@ -9,7 +9,7 @@
 @section('content')
   <div class="card card-primary">
     <div class="card-header">
-      <h2 class="card-title">{{ $look_category->name }}</h2>
+      <h2 class="card-title">Категория образа: {{ $look_category->name }}</h2>
     </div>
     <form method="POST" action="{{ route('look-categories.update', [ 'look_category' => $look_category->id ]) }}">
       @csrf
@@ -49,12 +49,4 @@
       </div>
     </form>
   </div>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-
 @stop

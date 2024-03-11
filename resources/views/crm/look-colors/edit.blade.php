@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Цвета образов | Редактировать | ' . $color->name)
 
 @section('content_header')
   <x-edit-toolbar resource_name="look-colors" resource="{{ $color->id }}" />
@@ -9,7 +9,7 @@
 @section('content')
   <div class="card card-primary">
     <div class="card-header">
-      <h2 class="card-title">{{ $color->name }}</h2>
+      <h2 class="card-title">Цвет образа: {{ $color->name }}</h2>
     </div>
     <form method="POST" action="{{ route('look-colors.update', [ 'look_color' => $color->id ]) }}">
       @csrf

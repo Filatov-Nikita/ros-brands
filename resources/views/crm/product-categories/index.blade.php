@@ -1,12 +1,12 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Категории товаров')
 
 @section('content_header')
   <x-rejected-delete-action>
     Категория уже используется в других записях.
   </x-rejected-delete-action>
-  <h1>Список категорий товаров</h1>
+  <h1>Категории товаров</h1>
 @stop
 
 @section('content')
@@ -16,12 +16,5 @@
   @include('crm.product-categories.parts.category-list', [
     'categories' => $categories,
   ])
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
-@stop
-
-@section('js')
-
+  <div class="pb-4"></div>
 @stop

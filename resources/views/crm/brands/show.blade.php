@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Бренды | ' . $brand->name)
 
 @section('content_header')
   <x-card-toolbar resource_name="brands" resource="{{ $brand->id }}" />

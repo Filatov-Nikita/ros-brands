@@ -1,16 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Пользователи')
 
 @section('content_header')
-  <h1>Список пользователей</h1>
+  <h1>Пользователи</h1>
 @stop
 
 @section('content')
 <div class="mb-4">
   <a class="btn btn-primary" href="{{ route('users.create') }}">Создать</a>
 </div>
-<table class="table" id="color-list-table" style="width:100%">
+<table class="table" id="user-list-table" style="width:100%">
   <thead>
       <tr>
         <th>Email</th>
@@ -40,17 +40,17 @@
     @endforeach
   </tbody>
 </table>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+<div class="pb-4"></div>
 @stop
 
 @section('js')
   <script>
-    $('#color-list-table').DataTable();
-    // new DataTable('', {
-    //     order: [[3, 'desc']]
-    // });
+    $('#user-list-table').DataTable(
+      {
+        language: {
+          url: '//cdn.datatables.net/plug-ins/2.0.2/i18n/ru.json',
+        }
+      }
+    );
   </script>
 @stop

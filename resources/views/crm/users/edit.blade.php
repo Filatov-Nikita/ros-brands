@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Пользователи | Редактировать | ' . $user->name)
 
 @section('content_header')
   <x-edit-toolbar resource_name="users" resource="{{ $user->id }}" />
@@ -9,7 +9,7 @@
 @section('content')
   <div class="card card-primary">
     <div class="card-header">
-      <h2 class="card-title">{{ $user->name }}</h2>
+      <h2 class="card-title">Пользователь: {{ $user->name }}</h2>
     </div>
     <form method="POST" action="{{ route('users.update', [ 'user' => $user->id ]) }}">
       @csrf

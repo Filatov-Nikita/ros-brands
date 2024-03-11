@@ -1,19 +1,19 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Стилисты')
 
 @section('content_header')
   <x-rejected-delete-action>
     Стилист уже используется в других записях.
   </x-rejected-delete-action>
-  <h1>Список стилистов</h1>
+  <h1>Стилисты</h1>
 @stop
 
 @section('content')
 <div class="mb-4">
   <a class="btn btn-primary" href="{{ route('designers.create') }}">Создать</a>
 </div>
-<table class="table" id="style-list-table" style="width:100%">
+<table class="table" id="designer-list-table" style="width:100%">
   <thead>
       <tr>
         <th>Название</th>
@@ -54,17 +54,17 @@
     @endforeach
   </tbody>
 </table>
-@stop
-
-@section('css')
-  {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+<div class="pb-4"></div>
 @stop
 
 @section('js')
   <script>
-    $('#style-list-table').DataTable();
-    // new DataTable('', {
-    //     order: [[3, 'desc']]
-    // });
+    $('#designer-list-table').DataTable(
+      {
+        language: {
+          url: '//cdn.datatables.net/plug-ins/2.0.2/i18n/ru.json',
+        }
+      }
+    );
   </script>
 @stop
