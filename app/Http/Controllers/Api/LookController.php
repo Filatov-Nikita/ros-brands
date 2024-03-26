@@ -30,6 +30,12 @@ class LookController extends Controller
             $query->whereIn('look_color_id', $request->input('color_ids'));
         }
 
+        if($request->filled('style_ids')) {
+            $query->whereHas('look_styles', function (Builder $lookStyleQuery) use($request) {
+                $lookStyleQuery->whereIn('look_styles.id', $request->input('style_ids'));
+            });
+        }
+
         if($request->filled('brand_ids')) {
             $query->whereHas('products', function (Builder $productQuery) use($request) {
                 $productQuery->whereIn('brand_id', $request->input('brand_ids'));
