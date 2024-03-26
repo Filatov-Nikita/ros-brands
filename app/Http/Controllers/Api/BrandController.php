@@ -11,10 +11,15 @@ class BrandController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $brands = Brand::where('visible', 1)->orderBy('name', 'asc')->get();
-        return $brands;
+        $brands = Brand::where('visible', 1);
+
+        if($request->filled('mall_id')) {
+            $brands->whereRelation('malls', 'malls.id', $request->input('mall_id'));
+        }
+
+        return $brands->orderBy('name', 'asc')->get();
     }
 
     /**
