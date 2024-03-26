@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\ProductCategory;
+use App\Exceptions\CannotDeleteException;
 
 class ProductController extends Controller
 {
@@ -117,9 +118,13 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
-        Product::destroy($id);
+        try {
+            Product::findOrFail($id)->delete();
+        } catch(CannotDeleteException $e) {
+            $request->session()->flash('alert-cannot-delete', true);
+        }
 
         return redirect()->route('products.index');
     }

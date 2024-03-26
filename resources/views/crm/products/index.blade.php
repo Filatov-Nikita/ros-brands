@@ -3,6 +3,9 @@
 @section('title', 'Товары')
 
 @section('content_header')
+  <x-rejected-delete-action>
+    Товар уже используется в других записях.
+  </x-rejected-delete-action>
   <h1>Товары</h1>
 @stop
 

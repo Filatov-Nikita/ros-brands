@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
+use App\Exceptions\CannotDeleteException;
 
 class Product extends Model
 {
@@ -38,5 +39,14 @@ class Product extends Model
     public function images(): MorphMany
     {
         return $this->morphMany(Attachment::class, 'domain')->where('type', 'image');
+    }
+
+    protected static function booted(): void
+    {
+        static::deleting(function(Product $product) {
+            if($product->looks()->count() > 0) {
+                throw new CannotDeleteException();
+            }
+        });
     }
 }
