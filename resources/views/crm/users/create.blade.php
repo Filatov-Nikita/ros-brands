@@ -21,7 +21,7 @@
           required
           name="name"
           id="name"
-          label="Название"
+          label="Имя"
           type="text"
           enable-old-support
         />

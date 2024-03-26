@@ -56,7 +56,7 @@
                   @checked($binded_malls->contains($mall->id))
                 >
                 <label class="form-check-label" for="mall-{{ $mall->id }}">
-                  {{ $mall->name }}
+                  {{ $mall->name }} - {{ $mall->city }}
                 </label>
               </div>
             @endforeach

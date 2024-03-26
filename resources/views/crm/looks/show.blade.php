@@ -180,7 +180,7 @@
           </div>
           <div class="card-body">
             <div class="mb-3">
-              <video style="width: 100%; height: auto" controls src="{{ $video->url }}"></video>
+              <video style="width: 220px; height: auto" controls src="{{ $video->url }}"></video>
             </div>
             <form class="mb-4" action="{{ route('looks.video.update', [ 'look' => $look->id ]) }}" method="POST" enctype="multipart/form-data">
               @csrf
