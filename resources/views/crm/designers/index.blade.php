@@ -16,6 +16,7 @@
 <table class="table" id="designer-list-table" style="width:100%">
   <thead>
       <tr>
+        <th>ID</th>
         <th>Название</th>
         <th>Видимость</th>
         <th>Приоритет</th>
@@ -25,6 +26,7 @@
   <tbody>
     @foreach ($designers as $designer)
       <tr>
+        <th>{{ $designer->id }}</th>
         <th>
           <a href="{{ route('designers.show', [ 'designer' => $designer->id ]) }}">
             {{ $designer->name }}

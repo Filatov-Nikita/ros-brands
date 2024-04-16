@@ -16,6 +16,7 @@
 <table class="table" id="brand-list-table" style="width:100%">
   <thead>
       <tr>
+        <th>ID</th>
         <th>Название</th>
         <th>ID на сайте планета</th>
         <th>Видимость</th>
@@ -25,6 +26,7 @@
   <tbody>
     @foreach ($brands as $brand)
       <tr>
+        <th>{{ $brand->id }}</th>
         <th>
           <a href="{{ route('brands.show', [ 'brand' => $brand->id ]) }}">
             {{ $brand->name }}

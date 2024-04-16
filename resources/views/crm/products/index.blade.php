@@ -16,6 +16,7 @@
 <table class="table" id="product-list-table" style="width:100%">
   <thead>
       <tr>
+        <th>ID</th>
         <th>Название</th>
         <th>Цена</th>
         <th>Бренд</th>
@@ -28,6 +29,7 @@
   <tbody>
     @foreach ($products as $product)
       <tr>
+        <th>{{ $product->id }}</th>
         <th>
           <a href="{{ route('products.show', [ 'product' => $product->id ]) }}">
             {{ $product->name }}

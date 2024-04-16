@@ -13,6 +13,7 @@
 <table class="table" id="mall-list-table" style="width:100%">
   <thead>
       <tr>
+        <th>ID</th>
         <th>Название</th>
         <th>Город</th>
         <th>Сайт</th>
@@ -25,6 +26,7 @@
   <tbody>
     @foreach ($malls as $mall)
       <tr>
+        <th>{{ $mall->id }}</th>
         <th>
           <a href="{{ route('malls.show', [ 'mall' => $mall->id ]) }}">
             {{ $mall->name }}

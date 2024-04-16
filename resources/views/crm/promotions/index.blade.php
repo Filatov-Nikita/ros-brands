@@ -13,6 +13,7 @@
 <table class="table" id="promotion-list-table" style="width:100%">
   <thead>
       <tr>
+        <th>ID</th>
         <th>Название</th>
         <th>Видимость</th>
         <th>Действия</th>
@@ -21,6 +22,7 @@
   <tbody>
     @foreach ($promotions as $promotion)
       <tr>
+        <th>{{ $promotion->id }}</th>
         <th>
           <a href="{{ route('promotions.show', [ 'promotion' => $promotion->id ]) }}">
             {{ $promotion->name }}

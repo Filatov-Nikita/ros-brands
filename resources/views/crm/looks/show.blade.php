@@ -244,6 +244,7 @@
                     <th>Бренд</th>
                     <th>Категория</th>
                     <th>Выбрать</th>
+                    <th>Привязан</th>
                   </tr>
               </thead>
               <tbody>
@@ -262,6 +263,9 @@
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="look_product_ids[]" value="{{ $product->id }}" @checked($look->products->contains($product->id))>
                       </div>
+                    </th>
+                    <th>
+                      {{ $look->products->contains($product->id) ? 'Да' : 'Нет' }}
                     </th>
                   </tr>
                 @endforeach
@@ -283,7 +287,8 @@
       {
         language: {
           url: '//cdn.datatables.net/plug-ins/2.0.2/i18n/ru.json',
-        }
+        },
+        order: [6, 'asc'],
       }
     );
   </script>

@@ -13,6 +13,7 @@
 <table class="table" id="look-list-table" style="width:100%">
   <thead>
       <tr>
+        <th>ID</th>
         <th>Название</th>
         <th>Видимость</th>
         <th>Приоритет</th>
@@ -22,6 +23,7 @@
   <tbody>
     @foreach ($looks as $look)
       <tr>
+        <th>{{ $look->id }}</th>
         <th>
           <a href="{{ route('looks.show', [ 'look' => $look->id ]) }}">
             {{ $look->name }}

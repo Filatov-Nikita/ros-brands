@@ -13,6 +13,7 @@
 <table class="table" id="user-list-table" style="width:100%">
   <thead>
       <tr>
+        <th>ID</th>
         <th>Email</th>
         <th>Имя</th>
         <th>Видимость</th>
@@ -22,6 +23,7 @@
   <tbody>
     @foreach ($users as $user)
       <tr>
+        <th>{{ $user->id }}</th>
         <th>
           <a href="{{ route('users.show', [ 'user' => $user->id ]) }}">
             {{ $user->email }}
