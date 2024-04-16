@@ -16,7 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::with('brand')->with('product_category')->get();
+        $products = Product::with('brand')->with('product_category')->with('thumbnail')->get();
 
         return view('crm.products.index', [
             'products' => $products,

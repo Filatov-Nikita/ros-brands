@@ -19,6 +19,7 @@
         <th>ID</th>
         <th>Название</th>
         <th>ID на сайте планета</th>
+        <th>Привязан к ТРЦ</th>
         <th>Видимость</th>
         <th>Действия</th>
       </tr>
@@ -33,6 +34,13 @@
           </a>
         </th>
         <th>{{ $brand->planeta_mall_id }}</th>
+        <th>
+          @forelse($brand->malls as $mall)
+            <div>{{ $mall->name . ' - ' . $mall->city }}</div>
+          @empty
+            <div>-</div>
+          @endforelse
+        </th>
         <th>{{ $brand->visible ? 'Да' : 'Нет' }}</th>
         <th>
           <div class="btn-group">

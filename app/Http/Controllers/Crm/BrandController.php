@@ -21,7 +21,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::orderBy('name', 'asc')->get();
+        $brands = Brand::with('malls')->orderBy('name', 'asc')->get();
 
         return view('crm.brands.index', [
             'brands' => $brands

@@ -13,7 +13,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banners = Banner::all();
+        $banners = Banner::with('image')->get();
 
         return view('crm.banners.index', [
             'banners' => $banners,

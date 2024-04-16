@@ -17,6 +17,7 @@
   <thead>
       <tr>
         <th>ID</th>
+        <th>Миниатюра</th>
         <th>Название</th>
         <th>Цена</th>
         <th>Бренд</th>
@@ -30,6 +31,13 @@
     @foreach ($products as $product)
       <tr>
         <th>{{ $product->id }}</th>
+        <th>
+          @if($product->thumbnail)
+            <img style="width: 90px; height: auto; border-radius: 6px" width="{{ $product->thumbnail->width }}" height="{{ $product->thumbnail->height }}" src="{{ $product->thumbnail->url }}" loading="lazy">
+          @else
+            <span>-</span>
+          @endif
+        </th>
         <th>
           <a href="{{ route('products.show', [ 'product' => $product->id ]) }}">
             {{ $product->name }}

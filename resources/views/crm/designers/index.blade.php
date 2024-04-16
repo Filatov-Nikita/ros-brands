@@ -17,6 +17,7 @@
   <thead>
       <tr>
         <th>ID</th>
+        <th>Изображение</th>
         <th>Название</th>
         <th>Видимость</th>
         <th>Приоритет</th>
@@ -27,6 +28,13 @@
     @foreach ($designers as $designer)
       <tr>
         <th>{{ $designer->id }}</th>
+        <th>
+          @if($designer->image)
+            <img style="width: 120px; height: auto; border-radius: 6px" width="{{ $designer->image->width }}" height="{{ $designer->image->height }}" src="{{ $designer->image->url }}" loading="lazy">
+          @else
+            <span>-</span>
+          @endif
+        </th>
         <th>
           <a href="{{ route('designers.show', [ 'designer' => $designer->id ]) }}">
             {{ $designer->name }}

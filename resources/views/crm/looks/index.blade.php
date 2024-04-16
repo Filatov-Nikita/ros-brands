@@ -14,7 +14,11 @@
   <thead>
       <tr>
         <th>ID</th>
+        <th>Миниатюра</th>
         <th>Название</th>
+        <th>Категория</th>
+        <th>Стилист</th>
+        <th>Стили</th>
         <th>Видимость</th>
         <th>Приоритет</th>
         <th>Действия</th>
@@ -25,9 +29,39 @@
       <tr>
         <th>{{ $look->id }}</th>
         <th>
+          @if($look->thumbnail)
+            <img style="width: 90px; height: auto; border-radius: 6px" width="{{ $look->thumbnail->width }}" height="{{ $look->thumbnail->height }}" src="{{ $look->thumbnail->url }}" loading="lazy">
+          @else
+            <span>-</span>
+          @endif
+        </th>
+        <th>
           <a href="{{ route('looks.show', [ 'look' => $look->id ]) }}">
             {{ $look->name }}
           </a>
+        </th>
+        <th>
+          @if($look->look_category)
+            {{ $look->look_category->name }}
+          @else
+           <span>-</span>
+          @endif
+        </th>
+        <th>
+          @if($look->designer)
+            {{ $look->designer->name }}
+          @else
+            <span>-</span>
+          @endif
+        </th>
+        <th>
+          @forelse($look->look_styles as $style)
+            <div>
+              {{ $style->name }}
+            </div>
+          @empty
+            <span>-</span>
+          @endforelse
         </th>
         <th>{{ $look->visible ? 'Да' : 'Нет' }}</th>
         <th>{{ $look->priority }}</th>

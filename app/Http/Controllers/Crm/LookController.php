@@ -19,7 +19,7 @@ class LookController extends Controller
      */
     public function index()
     {
-        $looks = Look::all();
+        $looks = Look::with(['thumbnail', 'look_category', 'designer', 'look_styles'])->get();
 
         return view('crm.looks.index', [
             'looks' => $looks,

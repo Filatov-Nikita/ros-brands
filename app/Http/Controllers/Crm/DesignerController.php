@@ -14,7 +14,7 @@ class DesignerController extends Controller
      */
     public function index()
     {
-        $designers = Designer::all();
+        $designers = Designer::with('image')->get();
 
         return view('crm.designers.index', [
             'designers' => $designers,

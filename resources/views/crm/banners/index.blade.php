@@ -14,6 +14,7 @@
   <thead>
       <tr>
         <th>ID</th>
+        <th>Изображение</th>
         <th>Заголовок</th>
         <th>Url</th>
         <th>Видимость</th>
@@ -28,6 +29,13 @@
           <a href="{{ route('banners.show', [ 'banner' => $banner->id ]) }}">
             {{ $banner->id }}
           </a>
+        </th>
+        <th>
+          @if($banner->image)
+            <img style="width: 120px; height: auto; border-radius: 6px" width="{{ $banner->image->width }}" height="{{ $banner->image->height }}" src="{{ $banner->image->url }}" loading="lazy">
+          @else
+            <span>-</span>
+          @endif
         </th>
         <th>
           {{ $banner->title ?? '-' }}
