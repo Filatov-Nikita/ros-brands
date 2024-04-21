@@ -115,6 +115,7 @@ class LookController extends Controller
         $look = Look::findOrFail($id);
 
         $looks = Look::whereRelation('look_color', 'id', $look->look_color_id)
+            ->whereRelation('look_category', 'id', $look->look_category_id)
             ->where('id', '!=', $look->id);
 
         return LookListResource::collection($looks->limit(4)->get());
