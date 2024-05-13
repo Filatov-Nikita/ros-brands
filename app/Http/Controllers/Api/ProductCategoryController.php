@@ -13,7 +13,8 @@ class ProductCategoryController extends Controller
      */
     public function index()
     {
-        $categories = ProductCategory::all();
+        $categories = ProductCategory::withCount('products')->get();
+
         return app_get_tree($categories->toArray());
     }
 
