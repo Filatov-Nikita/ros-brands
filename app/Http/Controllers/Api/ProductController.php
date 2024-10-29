@@ -53,7 +53,7 @@ class ProductController extends Controller
             $query->where('visible', 1);
         }]);
 
-        $result = $query->paginate(16);
+        $result = $query->latest()->paginate(16);
 
         return ProductListResource::collection($result);
     }
