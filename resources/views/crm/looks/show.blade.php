@@ -233,8 +233,6 @@
           <h1>Привязать товары к образу</h1>
         </div>
         <div class="card-body">
-          <form method="POST" action="{{ route('looks.attach_products', [ 'look' =>  $look->id]) }}">
-            @csrf
             <table class="table" id="product-list-table" style="width:100%">
               <thead>
                   <tr>
@@ -271,9 +269,15 @@
                 @endforeach
               </tbody>
             </table>
-            <button class="btn btn-primary mt-4" type="submit">
-              Привязать
-            </button>
+            <form id="form_attach" method="POST" action="{{ route('looks.attach_products', [ 'look' =>  $look->id]) }}">
+              @csrf
+              @foreach($look->products as $product)
+                <input class="product-hidden" type="hidden" name="look_product_ids[]" value="{{ $product->id }}" checked>
+              @endforeach
+              <button class="btn btn-primary mt-4" type="submit">
+                Привязать
+              </button>
+            </form>
           </form>
         </div>
       </div>
@@ -291,5 +295,18 @@
         order: [6, 'asc'],
       }
     );
+
+    const form = $('#form_attach');
+
+    $('.form-check-input').on('change', (e) => {
+      if(e.target.checked) {
+        const input = $(`<input class="product-hidden" name="look_product_ids[]" type="hidden" value="${e.target.value}" />`);
+        form.append(input);
+      } else {
+        $('.product-hidden').filter(function() {
+          return this.value === e.target.value
+        }).remove();
+      }
+    });
   </script>
 @stop
